@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raul Ferreira | Full Stack Dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.8);
+            --accent: #58a6ff;
+            --text: #c9d1d9;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 50%, #161b22 0%, #0d1117 100%);
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+        header { text-align: center; margin-bottom: 60px; }
+        .profile-pic { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--accent); margin-bottom: 20px; }
+        h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+        .badge { background: var(--accent); color: var(--bg); padding: 4px 12px; border-radius: 20px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; }
+
+        .section-title { margin: 40px 0 20px; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+
+        .card-featured { 
+            grid-column: 1 / -1; 
+            background: var(--card-bg); 
+            border: 1px solid var(--glass);
+            border-radius: 15px; 
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card-featured:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        .mock-app { 
+            flex: 1; min-width: 300px; background: #010409; border-radius: 10px; padding: 15px;
+            border: 1px solid #30363d;
+        }
+
+        .mock-header { font-size: 0.7rem; color: var(--accent); border-bottom: 1px solid #30363d; padding-bottom: 5px; margin-bottom: 10px; display: flex; justify-content: space-between; }
+        .mock-content { display: flex; flex-direction: column; gap: 8px; }
+        .mock-item { height: 12px; background: #161b22; border-radius: 4px; width: 100%; }
+
+        .stats-container { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        .stats-container img { border-radius: 10px; border: 1px solid var(--glass); }
+
+        footer { text-align: center; margin-top: 80px; font-size: 0.8rem; color: #8b949e; border-top: 1px solid var(--glass); padding-top: 20px; }
+        
+        .social-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .social-links a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .social-links a:hover { color: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://github.com/raullferreiraa.png" alt="Raul Ferreira" class="profile-pic">
+        <h1>Raul Ferreira</h1>
+        <p>Ciência da Computação @ UVV | Full Stack em evolução</p>
+        <span class="badge">Open for Internship</span>
+    </header>
+
+    <h2 class="section-title">🚀 Projeto em Destaque</h2>
+    
+    <div class="card-featured">
+        <div style="flex: 1.5; min-width: 250px;">
+            <h3>Garagem Digital</h3>
+            <p style="margin: 15px 0; font-size: 0.95rem;">
+                Laboratório Full Stack para gestão de ativos automotivos. Desenvolvido com <strong>Python (Flask)</strong> e <strong>MySQL</strong>. 
+                Focado em performance e interfaces minimalistas.
+            </p>
+            <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 20px;">
+                * Status: Em desenvolvimento contínuo (Estudo de APIs e Persistência).
+            </p>
+            <a href="https://github.com/raullferreiraa/garagem-digital" target="_blank" style="background: var(--accent); color: var(--bg); padding: 8px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.9rem;">Ver Repositório</a>
+        </div>
+        
+        <div class="mock-app">
+            <div class="mock-header">
+                <span>garagem_digital / dashboard</span>
+                <span style="color: #3fb950;">● Online</span>
+            </div>
+            <div class="mock-content">
+                <div style="display: flex; gap: 5px;">
+                    <div class="mock-item" style="width: 30%;"></div>
+                    <div class="mock-item" style="width: 70%;"></div>
+                </div>
+                <div class="mock-item"></div>
+                <div class="mock-item" style="width: 50%;"></div>
+                <div class="mock-item" style="background: var(--accent); opacity: 0.3;"></div>
+                <div class="mock-item"></div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">📊 GitHub Activity</h2>
+    <div class="stats-container">
+        <img src="https://github-readme-stats.vercel.app/api?username=raullferreiraa&show_icons=true&theme=radical&include_all_commits=true&count_private=true" alt="GitHub Stats">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=raullferreiraa&layout=compact&langs_count=7&theme=radical" alt="Top Langs">
+    </div>
+
+    <div class="social-links">
+        <a href="https://linkedin.com/in/raullferreiraa">LinkedIn</a>
+        <a href="https://github.com/raullferreiraa">GitHub</a>
+        <a href="mailto:raulsfr59@gmail.com">E-mail</a>
+    </div>
+
+    <footer>
+        Vila Velha - ES | 2026 | Programando o futuro.
+    </footer>
+</div>
+
+</body>
+</html>
