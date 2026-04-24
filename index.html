@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio e CV de Raul Ferreira - Estudante de Ciência da Computação e Desenvolvedor Full Stack">
     <title>Raul Ferreira | Portfólio & CV</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -30,11 +31,12 @@
         .profile-pic { width: 130px; height: 130px; border-radius: 50%; border: 2px solid var(--accent); margin-bottom: 20px; padding: 5px; }
         h1 { font-size: 2.2rem; color: #fff; margin-bottom: 5px; }
         .location { font-size: 0.9rem; color: #8b949e; margin-bottom: 15px; }
+        .badges-wrapper { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .badge { border: 1px solid var(--accent); color: var(--accent); padding: 5px 15px; border-radius: 20px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .badge.lang { border-color: #3fb950; color: #3fb950; }
 
         .section-title { margin: 40px 0 20px; font-size: 1.2rem; color: #fff; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--glass); padding-bottom: 10px; }
 
-        /* Cards & Grid */
         .card { background: var(--card-bg); border: 1px solid var(--glass); border-radius: 12px; padding: 25px; margin-bottom: 20px; transition: 0.3s; }
         .card:hover { border-color: var(--accent); }
         
@@ -43,12 +45,10 @@
         .date { font-size: 0.8rem; color: #8b949e; font-weight: 600; }
         .institution { font-size: 0.9rem; color: #fff; display: block; margin-bottom: 10px; }
 
-        /* Listas de Cursos */
-        .courses-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; list-style: none; }
-        .courses-list li { font-size: 0.85rem; color: #8b949e; display: flex; align-items: center; gap: 8px; }
-        .courses-list li::before { content: "▹"; color: var(--accent); }
+        .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .course-item { font-size: 0.85rem; color: #8b949e; margin-bottom: 8px; list-style: none; }
+        .course-item span { color: #fff; font-weight: 600; display: block; }
 
-        /* Skills */
         .skills-container { display: flex; flex-wrap: wrap; gap: 8px; }
         .skill-tag { background: #161b22; border: 1px solid #30363d; padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; color: #c9d1d9; }
 
@@ -61,70 +61,94 @@
 </head>
 <body>
 
-<div class="container">
+<main class="container">
     <header>
-        <img src="https://github.com/raullferreiraa.png" alt="Raul Ferreira" class="profile-pic">
+        <img src="https://github.com/raullferreiraa.png" alt="Foto de perfil de Raul Ferreira" class="profile-pic">
         <h1>Raul Ferreira</h1>
         <p class="location">Vila Velha, ES | Ciência da Computação @ UVV</p>
-        <span class="badge">Open for Internship</span>
+        <div class="badges-wrapper">
+            <span class="badge">Open for Internship</span>
+            <span class="badge lang">English B1 Intermediate</span>
+        </div>
     </header>
 
-    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h2>
-    <div class="card">
-        <div class="card-header">
-            <h3>Bacharelado em Ciência da Computação</h3>
-            <span class="date">2023/2 — o momento</span>
+    <section>
+        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h2>
+        <div class="card">
+            <div class="card-header">
+                <h3>Bacharelado em Ciência da Computação</h3>
+                <span class="date">2023/2 — Presente</span>
+            </div>
+            <span class="institution">Universidade Vila Velha (UVV)</span>
         </div>
-        <span class="institution">Universidade Vila Velha (UVV)</span>
-    </div>
+    </section>
 
-    <h2 class="section-title"><i class="fas fa-certificate"></i> Certificações & Especializações</h2>
-    <div class="card">
-        <span class="institution">Desenvolvimento de Software & Stack Web</span>
-        <ul class="courses-list">
-            <li>Formação React.js</li>
-            <li>Formação Next.js</li>
-            <li>Formação Node.js</li>
-            <li>Desenvolvimento Web Full Stack</li>
-            <li>Banco de Dados & SQL</li>
-            <li>Lógica de Programação</li>
-        </ul>
-        <p style="font-size: 0.75rem; color: #484f58; margin-top: 15px;">* Certificados obtidos através de formações complementares (Alura e outros).</p>
-    </div>
-
-    <h2 class="section-title"><i class="fas fa-code"></i> Projetos</h2>
-    <div class="card">
-        <div class="card-header">
-            <h3>Garagem Digital</h3>
-            <a href="https://github.com/raullferreiraa/garagem-digital" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 0.8rem;">GitHub <i class="fas fa-external-link-alt"></i></a>
+    <section>
+        <h2 class="section-title"><i class="fas fa-certificate"></i> Certificações em Destaque</h2>
+        <div class="card">
+            <div class="courses-grid">
+                <div class="course-item">
+                    <span>Next.js e React - Curso Completo</span>
+                    Udemy (ago 2025)
+                </div>
+                <div class="course-item">
+                    <span>Java Fundamentals</span>
+                    Oracle (dez 2024)
+                </div>
+                <div class="course-item">
+                    <span>Imersão Dev Back-End</span>
+                    Alura (dez 2024)
+                </div>
+                <div class="course-item">
+                    <span>HTML e CSS: Estruturas e Tags</span>
+                    Alura (jan 2025)
+                </div>
+                <div class="course-item">
+                    <span>Lógica de Programação com JS</span>
+                    Alura (nov 2024)
+                </div>
+            </div>
         </div>
-        <p style="font-size: 0.9rem; color: #8b949e;">Sistema Full Stack (Python/Flask + MySQL) para gestão de ativos automotivos. Focado em integração de backend e persistência de dados.</p>
-    </div>
+    </section>
 
-    <h2 class="section-title"><i class="fas fa-tools"></i> Tecnologias</h2>
-    <div class="card">
-        <div class="skills-container">
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">React.js</span>
-            <span class="skill-tag">Next.js</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Flask</span>
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">Git</span>
+    <section>
+        <h2 class="section-title"><i class="fas fa-code"></i> Projetos</h2>
+        <div class="card">
+            <div class="card-header">
+                <h3>Garagem Digital</h3>
+                <a href="https://github.com/raullferreiraa/garagem-digital" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-size: 0.8rem;">GitHub <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            <p style="font-size: 0.9rem; color: #8b949e; margin-bottom: 12px;">Sistema Full Stack para gestão de ativos automotivos. Focado em integração de backend e persistência de dados.</p>
+            <div class="skills-container">
+                <span class="skill-tag">Python</span> <span class="skill-tag">Flask</span> <span class="skill-tag">MySQL</span>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="social-buttons">
-        <a href="https://linkedin.com/in/raullferreiraa" class="social-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/raullferreiraa" class="social-btn" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="mailto:raulsfr59@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
-    </div>
+    <section>
+        <h2 class="section-title"><i class="fas fa-tools"></i> Stack Técnica</h2>
+        <div class="card">
+            <div class="skills-container">
+                <span class="skill-tag">JavaScript / Node.js</span>
+                <span class="skill-tag">React.js / Next.js</span>
+                <span class="skill-tag">Python / Flask</span>
+                <span class="skill-tag">Java / POO</span>
+                <span class="skill-tag">SQL (MySQL)</span>
+                <span class="skill-tag">Git & GitHub</span>
+            </div>
+        </div>
+    </section>
+
+    <nav class="social-buttons">
+        <a href="https://linkedin.com/in/raullferreiraa" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/raullferreiraa" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="mailto:raulsfr59@gmail.com" class="social-btn" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+    </nav>
 
     <footer>
         2026 | Raul Ferreira | Vila Velha - ES
     </footer>
-</div>
+</main>
 
 </body>
 </html>
