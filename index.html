@@ -26,17 +26,18 @@
 
         .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
 
+        /* Header */
         header { text-align: center; margin-bottom: 50px; }
         .profile-pic { width: 130px; height: 130px; border-radius: 50%; border: 3px solid var(--accent); margin-bottom: 20px; box-shadow: 0 0 20px rgba(88, 166, 255, 0.2); }
         h1 { font-size: 2.2rem; color: #fff; margin-bottom: 5px; }
         .badge { background: var(--accent); color: var(--bg); padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        .about-text { text-align: center; max-width: 700px; margin: 30px auto; color: #8b949e; font-size: 0.95rem; }
+        .about-text { text-align: center; max-width: 700px; margin: 30px auto; color: #8b949e; font-size: 0.95rem; line-height: 1.8; }
 
         .section-title { margin: 50px 0 25px; font-size: 1.3rem; color: #fff; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--glass); padding-bottom: 10px; }
 
-        /* Grid de Projetos */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        /* Resume Grid */
+        .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 
         .card { 
             background: var(--card-bg); 
@@ -44,24 +45,30 @@
             border-radius: 12px; 
             padding: 25px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
+        .card:hover { border-color: var(--accent); background: rgba(88, 166, 255, 0.05); }
 
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(88, 166, 255, 0.05); }
+        .full-width { grid-column: 1 / -1; }
 
-        .card-featured { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 25px; align-items: center; }
-        
-        .btn-repo { 
-            display: inline-block; margin-top: 15px; background: var(--accent); color: var(--bg); 
-            padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.85rem; 
+        h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 10px; }
+        .date { font-size: 0.8rem; color: #58a6ff; opacity: 0.8; font-weight: 600; }
+
+        /* Habilidades */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .skill-tag { background: #161b22; border: 1px solid #30363d; padding: 5px 12px; border-radius: 6px; font-size: 0.8rem; color: #c9d1d9; }
+
+        /* Botão CV */
+        .cv-button { 
+            display: inline-block; margin-top: 30px; border: 1px solid var(--accent); color: var(--accent); 
+            padding: 10px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: 0.3s;
         }
+        .cv-button:hover { background: var(--accent); color: var(--bg); }
 
         /* Stats */
         .stats-grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px; }
         .stats-grid img { border-radius: 8px; border: 1px solid var(--glass); height: 165px; }
 
-        /* Botões Redes Sociais */
+        /* Botões Sociais */
         .social-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 60px; }
         .social-btn { 
             width: 50px; height: 50px; border-radius: 10px; background: var(--card-bg); 
@@ -70,7 +77,11 @@
         }
         .social-btn:hover { background: var(--accent); color: var(--bg); transform: scale(1.1); }
 
-        footer { text-align: center; margin-top: 60px; font-size: 0.75rem; color: #484f58; }
+        footer { text-align: center; margin-top: 60px; font-size: 0.75rem; color: #484f58; padding-bottom: 40px; }
+
+        @media (max-width: 768px) {
+            .resume-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -79,55 +90,78 @@
     <header>
         <img src="https://github.com/raullferreiraa.png" alt="Raul Ferreira" class="profile-pic">
         <h1>Raul Ferreira</h1>
-        <p style="color: #8b949e; margin-bottom: 15px;">Ciência da Computação @ UVV</p>
+        <p style="color: #8b949e; margin-bottom: 15px;">Desenvolvedor Full Stack em formação</p>
         <span class="badge">Open for Internship</span>
+        <br>
+        <a href="#" class="cv-button"><i class="fas fa-file-download"></i> Baixar Currículo PDF</a>
     </header>
 
     <div class="about-text">
-        Estudante focado em construir bases sólidas em desenvolvimento Full Stack. 
-        Atualmente explorando <b>Python (Flask)</b> e <b>MySQL</b> através de projetos práticos e laboratórios pessoais.
+        Estudante de <b>Ciência da Computação na UVV</b>. Tenho foco no aprendizado prático de tecnologias modernas como 
+        Python, Flask e SQL. Acredito na construção de projetos reais como laboratórios de engenharia de software.
     </div>
 
-    <h2 class="section-title"><i class="fas fa-code-branch"></i> Projeto em Destaque</h2>
-    
-    <div class="card card-featured">
-        <div style="flex: 1.2; min-width: 280px;">
-            <h3 style="color: var(--accent);">Garagem Digital</h3>
-            <p style="margin: 12px 0; font-size: 0.9rem;">
-                Sistema para gestão de projetos automotivos. Um laboratório para estudo de APIs RESTful e persistência de dados.
-            </p>
-            <p style="font-size: 0.8rem; color: #8b949e;">* Em desenvolvimento contínuo.</p>
-            <a href="https://github.com/raullferreiraa/garagem-digital" class="btn-repo" target="_blank">Ver Código</a>
-        </div>
-        
-        <div style="flex: 1; min-width: 280px; background: #010409; border: 1px solid #30363d; border-radius: 8px; padding: 15px;">
-            <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #3fb950; margin-bottom: 10px;">
-                <span>garagem_digital / API</span>
-                <span>● Ativo</span>
+    <h2 class="section-title"><i class="fas fa-briefcase"></i> Projetos e Experiência</h2>
+    <div class="resume-grid">
+        <div class="card full-width">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h3>Garagem Digital</h3>
+                    <p class="date">Projeto Full Stack | Laboratório Pessoal</p>
+                </div>
+                <a href="https://github.com/raullferreiraa/garagem-digital" target="_blank" style="color: var(--accent); text-decoration: none;"><i class="fab fa-github"></i> Ver Repo</a>
             </div>
-            <div style="height: 10px; background: #161b22; margin-bottom: 8px; border-radius: 2px;"></div>
-            <div style="height: 10px; background: #161b22; margin-bottom: 8px; border-radius: 2px; width: 60%;"></div>
-            <div style="height: 10px; background: var(--accent); opacity: 0.2; border-radius: 2px;"></div>
+            <p style="font-size: 0.9rem; margin-top: 10px;">
+                Desenvolvimento de um sistema de gestão para entusiastas automotivos. 
+                Utilização de <b>Python/Flask</b> no backend e <b>MySQL</b> para banco de dados. 
+                Foco na implementação de CRUD e segurança básica de dados.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Cultura da Lata 027</h3>
+            <p class="date">Curadoria & Design</p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">
+                Documentação e organização de conteúdo voltado à cultura automotiva regional de Vila Velha.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Estudos Acadêmicos</h3>
+            <p class="date">UVV - Ciência da Computação</p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">
+                Resolução de algoritmos, lógica de programação e fundamentos de sistemas de informação.
+            </p>
         </div>
     </div>
 
-    <div class="grid" style="margin-top: 20px;">
-        <div class="card">
-            <h3 style="font-size: 1rem; color: #fff;">Cultura da Lata 027</h3>
-            <p style="font-size: 0.85rem; color: #8b949e; margin-top: 10px;">Curadoria de conteúdo e documentação da cultura automotiva local.</p>
-            <div style="margin-top: 15px; font-size: 0.75rem; color: var(--accent);">Estética & Design</div>
+    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formação</h2>
+    <div class="card full-width">
+        <div style="display: flex; justify-content: space-between;">
+            <h3>Ciência da Computação</h3>
+            <span class="date">2024 - Presente</span>
         </div>
-        <div class="card">
-            <h3 style="font-size: 1rem; color: #fff;">Estudos Full Stack</h3>
-            <p style="font-size: 0.85rem; color: #8b949e; margin-top: 10px;">Repositório focado em exercícios de lógica, SQL e integração de sistemas.</p>
-            <div style="margin-top: 15px; font-size: 0.75rem; color: var(--accent);">Python | SQL | JS</div>
+        <p><b>Universidade Vila Velha (UVV)</b></p>
+        <p style="font-size: 0.9rem; margin-top: 5px; color: #8b949e;">Foco em fundamentos de software, redes e arquitetura de sistemas.</p>
+    </div>
+
+    <h2 class="section-title"><i class="fas fa-tools"></i> Tecnologias & Habilidades</h2>
+    <div class="card full-width">
+        <div class="skills-container">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">JavaScript (ES6+)</span>
+            <span class="skill-tag">HTML5 / CSS3</span>
+            <span class="skill-tag">Git & GitHub</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Lógica de Programação</span>
         </div>
     </div>
 
-    <h2 class="section-title"><i class="fas fa-chart-line"></i> Atividade</h2>
+    <h2 class="section-title"><i class="fas fa-chart-line"></i> GitHub Analytics</h2>
     <div class="stats-grid">
         <img src="https://github-readme-stats.vercel.app/api?username=raullferreiraa&show_icons=true&theme=radical&include_all_commits=true&count_private=true" alt="Stats">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=raullferreiraa&layout=compact&langs_count=7&theme=radical" alt="Langs">
     </div>
 
     <div class="social-buttons">
