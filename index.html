@@ -45,12 +45,35 @@
             line-height: 1.6; 
             color: #8b949e; 
             text-align: center; 
-            margin-bottom: 50px; 
+            margin-bottom: 30px; 
             max-width: 700px; 
             margin-left: auto; 
             margin-right: auto;
         }
         .about-text strong { color: var(--accent); }
+
+        /* Estilos do Botão de Download */
+        .cv-download-wrapper { text-align: center; margin-bottom: 50px; }
+        .download-btn { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 10px; 
+            background: transparent; 
+            color: var(--accent); 
+            padding: 10px 20px; 
+            border: 1px solid var(--accent);
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            transition: 0.3s;
+        }
+        .download-btn:hover { 
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.2);
+        }
 
         .section-title { margin: 40px 0 20px; font-size: 1.2rem; color: #fff; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--glass); padding-bottom: 10px; }
 
@@ -120,10 +143,16 @@
     </header>
 
     <p class="about-text">
-        Estudante de <strong>Ciência da Computação</strong> focado no desenvolvimento de soluções <strong>Full Stack</strong>. 
-        Atualmente mergulhado no ecossistema Python e JavaScript, busco minha primeira oportunidade de 
-        estágio para aplicar conhecimentos em sistemas robustos e arquitetura de dados.
+        Estudante de Ciência da Computação focado em desenvolvimento <strong>Full Stack (Python/JS)</strong>. 
+        Desenvolvedor da <strong>Garagem Digital</strong> e entusiasta de sistemas eficientes e minimalistas. 
+        Busco minha primeira oportunidade de estágio para contribuir em projetos de engenharia de software e APIs.
     </p>
+
+    <div class="cv-download-wrapper">
+        <a href="Curriculo_Raul_Silva_Ferreira.pdf" download="Curriculo_Raul_Silva_Ferreira.pdf" class="download-btn">
+            <i class="fas fa-file-pdf"></i> Baixar Currículo
+        </a>
+    </div>
 
     <section>
         <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h2>
