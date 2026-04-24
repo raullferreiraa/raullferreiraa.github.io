@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raul Ferreira | Full Stack Developer</title>
+    <title>Raul Ferreira | Portfólio & CV</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -24,50 +24,39 @@
             min-height: 100vh;
         }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+        .container { max-width: 850px; margin: 0 auto; padding: 60px 20px; }
 
-        /* Header */
         header { text-align: center; margin-bottom: 50px; }
-        .profile-pic { width: 130px; height: 130px; border-radius: 50%; border: 3px solid var(--accent); margin-bottom: 20px; box-shadow: 0 0 20px rgba(88, 166, 255, 0.2); }
+        .profile-pic { width: 130px; height: 130px; border-radius: 50%; border: 2px solid var(--accent); margin-bottom: 20px; padding: 5px; }
         h1 { font-size: 2.2rem; color: #fff; margin-bottom: 5px; }
         .location { font-size: 0.9rem; color: #8b949e; margin-bottom: 15px; }
-        .badge { background: var(--accent); color: var(--bg); padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .badge { border: 1px solid var(--accent); color: var(--accent); padding: 5px 15px; border-radius: 20px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        .about-text { text-align: center; max-width: 700px; margin: 30px auto; color: #8b949e; font-size: 0.95rem; line-height: 1.8; }
+        .section-title { margin: 40px 0 20px; font-size: 1.2rem; color: #fff; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--glass); padding-bottom: 10px; }
 
-        .section-title { margin: 50px 0 25px; font-size: 1.3rem; color: #fff; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--glass); padding-bottom: 10px; }
+        /* Cards & Grid */
+        .card { background: var(--card-bg); border: 1px solid var(--glass); border-radius: 12px; padding: 25px; margin-bottom: 20px; transition: 0.3s; }
+        .card:hover { border-color: var(--accent); }
+        
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+        h3 { color: var(--accent); font-size: 1.1rem; }
+        .date { font-size: 0.8rem; color: #8b949e; font-weight: 600; }
+        .institution { font-size: 0.9rem; color: #fff; display: block; margin-bottom: 10px; }
 
-        /* Resume Grid */
-        .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .card { background: var(--card-bg); border: 1px solid var(--glass); border-radius: 12px; padding: 20px; transition: all 0.3s ease; }
-        .card:hover { border-color: var(--accent); background: rgba(88, 166, 255, 0.05); }
-        .full-width { grid-column: 1 / -1; }
+        /* Listas de Cursos */
+        .courses-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; list-style: none; }
+        .courses-list li { font-size: 0.85rem; color: #8b949e; display: flex; align-items: center; gap: 8px; }
+        .courses-list li::before { content: "▹"; color: var(--accent); }
 
-        h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 5px; }
-        .sub-title { font-size: 0.9rem; color: #fff; font-weight: 600; }
-        .date { font-size: 0.8rem; color: #58a6ff; opacity: 0.8; font-weight: 600; display: block; margin-bottom: 8px; }
+        /* Skills */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag { background: #161b22; border: 1px solid #30363d; padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; color: #c9d1d9; }
 
-        /* Listas */
-        ul { list-style: none; font-size: 0.9rem; color: #8b949e; }
-        li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        li::before { content: "▹"; color: var(--accent); }
-
-        /* Habilidades tags */
-        .skills-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
-        .skill-tag { background: #161b22; border: 1px solid #30363d; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; color: #c9d1d9; }
-
-        /* Social */
-        .social-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 60px; }
-        .social-btn { 
-            width: 45px; height: 45px; border-radius: 10px; background: var(--card-bg); 
-            border: 1px solid var(--glass); color: var(--accent); display: flex; 
-            align-items: center; justify-content: center; text-decoration: none; font-size: 1.1rem; transition: 0.3s;
-        }
+        .social-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 50px; }
+        .social-btn { width: 45px; height: 45px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--glass); color: var(--accent); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
         .social-btn:hover { background: var(--accent); color: var(--bg); transform: translateY(-3px); }
 
-        footer { text-align: center; margin-top: 60px; font-size: 0.75rem; color: #484f58; padding-bottom: 40px; }
-
-        @media (max-width: 768px) { .resume-grid { grid-template-columns: 1fr; } }
+        footer { text-align: center; margin: 60px 0 20px; font-size: 0.75rem; color: #484f58; }
     </style>
 </head>
 <body>
@@ -76,75 +65,53 @@
     <header>
         <img src="https://github.com/raullferreiraa.png" alt="Raul Ferreira" class="profile-pic">
         <h1>Raul Ferreira</h1>
-        <p class="location"><i class="fas fa-map-marker-alt"></i> Vila Velha, Espírito Santo</p>
+        <p class="location">Vila Velha, ES | Ciência da Computação @ UVV</p>
         <span class="badge">Open for Internship</span>
     </header>
 
-    <div class="about-text">
-        Estudante de <b>Ciência da Computação na UVV</b> focado em desenvolvimento Full Stack. 
-        Além da base acadêmica, busco especialização constante em tecnologias modernas como <b>React, Next.js e Node.js</b> para entregar soluções web completas e eficientes.
-    </div>
-
-    <h2 class="section-title"><i class="fas fa-certificate"></i> Cursos & Formações Concluídas</h2>
-    <div class="resume-grid">
-        <div class="card full-width">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <h3>Especialização em Desenvolvimento Web</h3>
-                    <p class="sub-title">Cursos de Formação Complementar</p>
-                </div>
-                <span class="badge" style="background: #3fb950; color: #fff;">Concluído</span>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 15px;">
-                <ul>
-                    <li>Desenvolvimento Web com <b>React.js</b></li>
-                    <li>Aplicações de Alta Performance com <b>Next.js</b></li>
-                    <li>Fundamentos e APIs com <b>Node.js</b></li>
-                </ul>
-                <ul>
-                    <li>Lógica de Programação Avançada</li>
-                    <li>Bancos de Dados Relacionais (SQL)</li>
-                    <li>Arquitetura de Sistemas Web</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
     <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h2>
-    <div class="card full-width">
-        <h3>Bacharelado em Ciência da Computação</h3>
-        <p class="sub-title">Universidade Vila Velha (UVV)</p>
-        <span class="date">2024 — 2028 (Previsão)</span>
-        <p style="font-size: 0.9rem; color: #8b949e;">Foco em algoritmos, estrutura de dados e engenharia de software.</p>
-    </div>
-
-    <h2 class="section-title"><i class="fas fa-code"></i> Projetos em Destaque</h2>
-    <div class="resume-grid">
-        <div class="card full-width">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <h3>Garagem Digital</h3>
-                    <p class="date">Laboratório Full Stack | Python & MySQL</p>
-                </div>
-                <a href="https://github.com/raullferreiraa/garagem-digital" target="_blank" style="color: var(--accent); text-decoration: none;"><i class="fab fa-github"></i> Ver Repo</a>
-            </div>
-            <p style="font-size: 0.9rem;">
-                Sistema CRUD completo para gestão de ativos automotivos. Projeto focado na integração de backend e persistência de dados.
-            </p>
+    <div class="card">
+        <div class="card-header">
+            <h3>Bacharelado em Ciência da Computação</h3>
+            <span class="date">2024 — 2028</span>
         </div>
+        <span class="institution">Universidade Vila Velha (UVV)</span>
     </div>
 
-    <h2 class="section-title"><i class="fas fa-tools"></i> Stack Tecnológica</h2>
-    <div class="card full-width">
+    <h2 class="section-title"><i class="fas fa-certificate"></i> Certificações & Especializações</h2>
+    <div class="card">
+        <span class="institution">Desenvolvimento de Software & Stack Web</span>
+        <ul class="courses-list">
+            <li>Formação React.js</li>
+            <li>Formação Next.js</li>
+            <li>Formação Node.js</li>
+            <li>Desenvolvimento Web Full Stack</li>
+            <li>Banco de Dados & SQL</li>
+            <li>Lógica de Programação</li>
+        </ul>
+        <p style="font-size: 0.75rem; color: #484f58; margin-top: 15px;">* Certificados obtidos através de formações complementares (Alura e outros).</p>
+    </div>
+
+    <h2 class="section-title"><i class="fas fa-code"></i> Projetos</h2>
+    <div class="card">
+        <div class="card-header">
+            <h3>Garagem Digital</h3>
+            <a href="https://github.com/raullferreiraa/garagem-digital" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 0.8rem;">GitHub <i class="fas fa-external-link-alt"></i></a>
+        </div>
+        <p style="font-size: 0.9rem; color: #8b949e;">Sistema Full Stack (Python/Flask + MySQL) para gestão de ativos automotivos. Focado em integração de backend e persistência de dados.</p>
+    </div>
+
+    <h2 class="section-title"><i class="fas fa-tools"></i> Tecnologias</h2>
+    <div class="card">
         <div class="skills-container">
+            <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">React.js</span>
             <span class="skill-tag">Next.js</span>
             <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Python (Flask)</span>
-            <span class="skill-tag">JavaScript (ES6+)</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Flask</span>
             <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">Git & GitHub</span>
-            <span class="skill-tag">HTML5 / CSS3</span>
+            <span class="skill-tag">Git</span>
         </div>
     </div>
 
@@ -155,7 +122,7 @@
     </div>
 
     <footer>
-        Vila Velha - ES | 2026 | Raul Ferreira
+        2026 | Raul Ferreira | Vila Velha - ES
     </footer>
 </div>
 
