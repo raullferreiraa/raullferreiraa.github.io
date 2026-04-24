@@ -12,8 +12,10 @@
             --bg: #0d1117;
             --card-bg: rgba(22, 27, 34, 0.8);
             --accent: #58a6ff;
+            --project-accent: #3fb950;
             --text: #c9d1d9;
             --glass: rgba(255, 255, 255, 0.05);
+            --glow-color: rgba(88, 166, 255, 0.3);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,7 +30,7 @@
         .container { max-width: 850px; margin: 0 auto; padding: 60px 20px; }
 
         header { text-align: center; margin-bottom: 50px; }
-        .profile-pic { width: 130px; height: 130px; border-radius: 50%; border: 2px solid var(--accent); margin-bottom: 20px; padding: 5px; }
+        .profile-pic { width: 130px; height: 130px; border-radius: 50%; border: 2px solid var(--accent); margin-bottom: 20px; padding: 5px; box-shadow: 0 0 15px var(--glow-color); }
         h1 { font-size: 2.2rem; color: #fff; margin-bottom: 5px; }
         .location { font-size: 0.9rem; color: #8b949e; margin-bottom: 15px; }
         .badges-wrapper { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
@@ -37,8 +39,8 @@
 
         .section-title { margin: 40px 0 20px; font-size: 1.2rem; color: #fff; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--glass); padding-bottom: 10px; }
 
-        .card { background: var(--card-bg); border: 1px solid var(--glass); border-radius: 12px; padding: 25px; margin-bottom: 20px; transition: 0.3s; }
-        .card:hover { border-color: var(--accent); }
+        .card { background: var(--card-bg); border: 1px solid var(--glass); border-radius: 12px; padding: 25px; margin-bottom: 20px; transition: 0.3s; position: relative; }
+        .card:hover:not(.project-featured) { border-color: var(--accent); }
         
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
         h3 { color: var(--accent); font-size: 1.1rem; }
@@ -49,8 +51,39 @@
         .course-item { font-size: 0.85rem; color: #8b949e; margin-bottom: 8px; list-style: none; }
         .course-item span { color: #fff; font-weight: 600; display: block; }
 
+        /* Estilos do Projeto em Destaque (Chamativo) */
+        .project-featured {
+            border: 2px solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(135deg, var(--accent), #f9826c, var(--project-accent));
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.2), 0 0 50px rgba(130, 249, 108, 0.1);
+        }
+        
+        .project-featured::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(135deg, var(--accent), #f9826c, var(--project-accent));
+            border-radius: 12px;
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.3;
+        }
+
+        .project-icon { color: var(--accent); margin-right: 8px; }
+        .project-featured h3 { font-size: 1.3rem; color: #fff; font-weight: 800; display: flex; align-items: center; }
+        .project-featured h3 span { color: var(--accent); }
+
+        .project-features { list-style: none; margin: 15px 0; font-size: 0.85rem; color: #c9d1d9; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        .project-features li { display: flex; align-items: center; gap: 8px; }
+        .project-features li::before { content: "✔️"; color: var(--project-accent); font-size: 0.9rem; }
+
+        .featured-link-btn { display: inline-flex; align-items: center; gap: 8px; background: rgba(88, 166, 255, 0.1); color: var(--accent); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(88, 166, 255, 0.2); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; position: absolute; top: 25px; right: 25px; }
+        .featured-link-btn:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); transform: translateY(-2px); }
+
         .skills-container { display: flex; flex-wrap: wrap; gap: 8px; }
         .skill-tag { background: #161b22; border: 1px solid #30363d; padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; color: #c9d1d9; }
+        .skill-tag.project-stack { border-color: var(--project-accent); color: #fff; background: rgba(63, 185, 80, 0.05); }
 
         .social-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 50px; }
         .social-btn { width: 45px; height: 45px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--glass); color: var(--accent); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
@@ -112,21 +145,32 @@
     </section>
 
     <section>
-        <h2 class="section-title"><i class="fas fa-code"></i> Projetos</h2>
-        <div class="card">
-            <div class="card-header">
-                <h3>Garagem Digital</h3>
-                <a href="https://github.com/raullferreiraa/garagem-digital" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-size: 0.8rem;">GitHub <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <p style="font-size: 0.9rem; color: #8b949e; margin-bottom: 12px;">Sistema Full Stack para gestão de ativos automotivos. Focado em integração de backend e persistência de dados.</p>
+        <h2 class="section-title"><i class="fas fa-code"></i> Projeto em Destaque</h2>
+        <div class="card project-featured">
+            <a href="https://github.com/raullferreiraa/garagem-digital" target="_blank" rel="noopener noreferrer" class="featured-link-btn" aria-label="Ver no GitHub">
+                GitHub <i class="fas fa-external-link-alt"></i>
+            </a>
+            <h3><i class="fas fa-car project-icon"></i> <span>Garagem</span> Digital</h3>
+            <p style="font-size: 0.95rem; color: #fff; font-weight: 600; margin-top: 10px;">Sistema Full Stack para gestão avançada de ativos automotivos.</p>
+            <p style="font-size: 0.85rem; color: #8b949e; margin: 10px 0;">Focado em integração de backend robusto e persistência de dados.</p>
+            
+            <p style="font-size: 0.8rem; color: #8b949e; font-weight: 600; text-transform: uppercase;">Destaques do Sistema</p>
+            <ul class="project-features">
+                <li>Gestão de Frota</li>
+                <li>Integração Backend Full Stack</li>
+                <li>Banco de Dados Relacional</li>
+                <li>APIs RESTFUL</li>
+            </ul>
+
+            <p style="font-size: 0.8rem; color: #8b949e; font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">Stack do Projeto</p>
             <div class="skills-container">
-                <span class="skill-tag">Python</span> <span class="skill-tag">Flask</span> <span class="skill-tag">MySQL</span>
+                <span class="skill-tag project-stack">Python</span> <span class="skill-tag project-stack">Flask</span> <span class="skill-tag project-stack">MySQL</span>
             </div>
         </div>
     </section>
 
     <section>
-        <h2 class="section-title"><i class="fas fa-tools"></i> Stack Técnica</h2>
+        <h2 class="section-title"><i class="fas fa-tools"></i> Stack Técnica Global</h2>
         <div class="card">
             <div class="skills-container">
                 <span class="skill-tag">JavaScript / Node.js</span>
