@@ -457,6 +457,50 @@ h3 {
     background: rgba(63, 185, 80, 0.09);
 }
 
+.tech-card {
+    padding: 22px;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.tech-group {
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at top left, rgba(88, 166, 255, 0.08), transparent 34%),
+        rgba(255, 255, 255, 0.028);
+}
+
+.tech-group-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 13px;
+}
+
+.tech-group-header i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    color: var(--accent-strong);
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid rgba(88, 166, 255, 0.18);
+}
+
+.tech-group-header h3 {
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
 .social-buttons {
     display: flex;
     justify-content: center;
@@ -619,7 +663,8 @@ footer {
     }
 
     .courses-grid,
-    .project-features {
+    .project-features,
+    .tech-grid {
         grid-template-columns: 1fr;
     }
 
@@ -694,6 +739,19 @@ footer {
         min-height: 31px;
         padding: 7px 10px;
         font-size: 0.72rem;
+    }
+
+    .tech-card {
+        padding: 16px;
+    }
+
+    .tech-group {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .tech-group-header h3 {
+        font-size: 0.8rem;
     }
 
     .social-buttons {
