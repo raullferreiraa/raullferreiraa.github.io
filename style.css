@@ -26,6 +26,12 @@ html { scroll-behavior: smooth; }
     box-sizing: border-box;
 }
 
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     min-height: 100vh;
     color: var(--text);
@@ -53,7 +59,7 @@ body::before {
 .container {
     width: min(100%, 980px);
     margin: 0 auto;
-    padding: 48px 22px 34px;
+    padding: 52px 24px 38px;
     position: relative;
     z-index: 1;
 }
@@ -216,7 +222,7 @@ h1 {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 44px 0 18px;
+    margin: 46px 0 16px;
     color: #fff;
     font-size: 0.9rem;
     font-weight: 900;
@@ -246,7 +252,7 @@ h1 {
 .card {
     position: relative;
     padding: 26px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     background:
@@ -575,7 +581,7 @@ footer {
     }
 
     .container {
-        padding: 18px 12px 26px;
+        padding: 18px 14px 28px;
     }
 
     header {
@@ -642,7 +648,7 @@ footer {
 
     .section-title {
         gap: 10px;
-        margin: 32px 0 14px;
+        margin: 34px 0 13px;
         font-size: 0.72rem;
         letter-spacing: 0.095em;
     }
@@ -655,8 +661,8 @@ footer {
     }
 
     .card {
-        padding: 18px;
-        margin-bottom: 16px;
+        padding: 17px;
+        margin-bottom: 18px;
         border-radius: 22px;
     }
 
@@ -812,7 +818,7 @@ footer {
 
 @media (max-width: 380px) {
     .container {
-        padding-inline: 10px;
+        padding-inline: 12px;
     }
 
     header,
