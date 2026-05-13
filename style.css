@@ -99,7 +99,7 @@ header > * {
     height: 132px;
     border-radius: 50%;
     border: 1px solid rgba(88, 166, 255, 0.8);
-    margin-bottom: 22px;
+    margin-bottom: 18px;
     padding: 5px;
     background: linear-gradient(145deg, rgba(88, 166, 255, 0.2), rgba(63, 185, 80, 0.08));
     box-shadow:
@@ -110,9 +110,9 @@ header > * {
 
 h1 {
     color: #fff;
-    font-size: clamp(2.25rem, 6vw, 4.1rem);
-    line-height: 0.95;
-    letter-spacing: -0.07em;
+    font-size: clamp(2.25rem, 6vw, 4.05rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
     margin-bottom: 14px;
     font-weight: 900;
 }
@@ -163,16 +163,16 @@ h1 {
 }
 
 .about-text {
-    max-width: 780px;
-    margin: 0 auto 24px;
-    padding: 22px 24px;
+    max-width: 790px;
+    margin: 0 auto 26px;
+    padding: 24px 28px;
     color: var(--muted-strong);
     text-align: center;
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: 0.98rem;
+    line-height: 1.82;
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
-    background: rgba(13, 17, 24, 0.66);
+    background: rgba(13, 17, 24, 0.68);
     box-shadow: 0 14px 42px rgba(0, 0, 0, 0.22);
     backdrop-filter: blur(12px);
 }
@@ -359,13 +359,16 @@ h3 {
 
 .project-featured {
     overflow: hidden;
-    border-color: rgba(88, 166, 255, 0.34);
+    padding: 34px;
+    border-color: rgba(88, 166, 255, 0.38);
     background:
-        radial-gradient(circle at top left, rgba(88, 166, 255, 0.18), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(63, 185, 80, 0.11), transparent 36%),
-        linear-gradient(145deg, rgba(255, 255, 255, 0.065), transparent 48%),
+        radial-gradient(circle at top left, rgba(88, 166, 255, 0.22), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(63, 185, 80, 0.14), transparent 38%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.075), transparent 46%),
         var(--card-bg-strong);
-    box-shadow: 0 26px 82px rgba(0, 0, 0, 0.52);
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.56),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
 }
 
 .project-featured::before {
@@ -384,26 +387,29 @@ h3 {
 }
 
 .project-featured h3 {
-    max-width: 660px;
-    padding-right: 130px;
+    max-width: 680px;
+    padding-right: 140px;
     color: #fff;
-    font-size: clamp(1.65rem, 4vw, 2.2rem);
-    line-height: 1.02;
-    letter-spacing: -0.055em;
+    font-size: clamp(1.9rem, 4vw, 2.45rem);
+    line-height: 0.98;
+    letter-spacing: -0.065em;
     font-weight: 950;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
-.project-featured h3 span { color: var(--accent-strong); }
+.project-featured h3 span {
+    color: var(--accent-strong);
+    margin-right: 6px;
+}
 
 .project-subtitle {
-    max-width: 660px;
+    max-width: 700px;
     padding-right: 120px;
     color: #f2f7ff;
-    font-size: 1rem;
-    font-weight: 750;
+    font-size: 1.04rem;
+    font-weight: 800;
     line-height: 1.5;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .project-description {
@@ -422,12 +428,13 @@ h3 {
 }
 
 .project-highlights div {
-    padding: 13px;
-    border: 1px solid rgba(88, 166, 255, 0.16);
-    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    border-radius: 16px;
     background:
-        linear-gradient(145deg, rgba(88, 166, 255, 0.08), transparent),
-        rgba(5, 8, 13, 0.34);
+        linear-gradient(145deg, rgba(88, 166, 255, 0.1), transparent),
+        rgba(5, 8, 13, 0.42);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
 .project-highlights strong {
@@ -492,11 +499,12 @@ h3 {
 
 .featured-link-btn {
     position: absolute;
-    top: 24px;
-    right: 24px;
-    min-height: 40px;
-    padding: 9px 15px;
+    top: 28px;
+    right: 28px;
+    min-height: 42px;
+    padding: 10px 17px;
     font-size: 0.78rem;
+    background: rgba(88, 166, 255, 0.12);
 }
 
 .skills-container {
@@ -762,7 +770,8 @@ footer span:not(:last-child)::after {
 
     h1 {
         font-size: clamp(2.35rem, 15vw, 3rem);
-        letter-spacing: -0.075em;
+        letter-spacing: -0.055em;
+        line-height: 0.98;
         margin-bottom: 12px;
     }
 
