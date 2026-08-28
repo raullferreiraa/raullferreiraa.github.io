@@ -191,6 +191,7 @@ h1 {
     margin-bottom: 14px;
     font-weight: 900;
     background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #94a3b8 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 12px 35px rgba(255,255,255,0.08);
@@ -332,6 +333,7 @@ h1 {
     letter-spacing: 0.18em;
     text-transform: uppercase;
     background: linear-gradient(90deg, #ffffff, #cbd5e1);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
