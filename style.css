@@ -175,8 +175,11 @@ h1 em { display: block; color: var(--accent); font-style: normal; }
 .info-card h3 { margin-top: 12px; font-size: 1.12rem; }
 .info-card > p:last-child, .info-card li { color: var(--muted); font-size: .87rem; }
 .info-card > p:last-child { margin-top: 8px; }
-.info-card ul { margin-top: 12px; padding-left: 20px; }
-.info-card li + li { margin-top: 4px; }
+.info-card ul { margin-top: 16px; padding: 0; list-style: none; }
+.course-list li { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding: 11px 0; border-top: 1px solid var(--line); }
+.course-list strong, .course-list span { display: block; }
+.course-list strong { color: var(--muted-strong); font-size: .86rem; font-weight: 600; }
+.course-list span { flex: 0 0 auto; color: var(--muted); font-size: .76rem; white-space: nowrap; }
 
 .contact-section { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: 80px; margin: 40px 0 32px; padding: clamp(30px, 6vw, 68px); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); background: linear-gradient(140deg, var(--accent-soft), rgba(255,255,255,.018)); }
 .contact-content { align-self: end; }
@@ -226,6 +229,8 @@ footer i { margin-left: 6px; color: var(--accent); }
   .skill-group i { margin-bottom: 24px; }
   .contact-section { margin-top: 20px; }
   .contact-links a { flex: 1 1 120px; justify-content: center; }
+  .course-list li { display: block; }
+  .course-list span { margin-top: 2px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
