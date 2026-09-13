@@ -170,7 +170,7 @@ h1 em { display: block; color: var(--accent); font-style: normal; }
 .skill-group i { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 36px; color: var(--accent); border: 1px solid var(--line-strong); border-radius: 12px; background: var(--accent-soft); }
 .skill-group h3 { font-size: 1rem; }
 .skill-group p { margin-top: 10px; color: var(--muted); font-size: .88rem; }
-.education-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+.education-grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: start; gap: 14px; margin-top: 14px; }
 .info-card { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
 .info-card h3 { margin-top: 12px; font-size: 1.12rem; }
 .info-card > p:last-child, .info-card li { color: var(--muted); font-size: .87rem; }
@@ -180,6 +180,9 @@ h1 em { display: block; color: var(--accent); font-style: normal; }
 .course-list strong, .course-list span { display: block; }
 .course-list strong { color: var(--muted-strong); font-size: .86rem; font-weight: 600; }
 .course-list span { flex: 0 0 auto; color: var(--muted); font-size: .76rem; white-space: nowrap; }
+.courses-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--accent); font-size: .78rem; font-weight: 700; text-decoration: none; }
+.courses-link:hover { color: #bae6fd; }
+.courses-link i { font-size: .68rem; }
 
 .contact-section { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: 80px; margin: 40px 0 32px; padding: clamp(30px, 6vw, 68px); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); background: linear-gradient(140deg, var(--accent-soft), rgba(255,255,255,.018)); }
 .contact-content { align-self: end; }
