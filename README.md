@@ -1,50 +1,47 @@
-# Raul Ferreira | Portfólio
+# Raul Ferreira — Portfólio
 
-Repositório do meu portfólio pessoal, desenvolvido para apresentar minha formação, tecnologias, projetos e formas de contato.
+Portfólio pessoal de **Raul Ferreira**, estudante de Ciência da Computação e desenvolvedor full stack em formação.
 
-Acesse o portfólio publicado:
+**Site:** [raullferreiraa.github.io](https://raullferreiraa.github.io/)
 
-**https://raullferreiraa.github.io**
+## Objetivo
 
-## Sobre
+Apresentar minha formação e meus projetos a partir de problemas, decisões técnicas e resultados — com destaque para a evolução da **Garagem Digital** de uma aplicação web para um produto mobile.
 
-Sou estudante de Ciência da Computação na Universidade Vila Velha (UVV), com foco em desenvolvimento Full Stack, APIs, banco de dados e aplicações web.
-
-O portfólio destaca minha evolução prática por meio de projetos, principalmente o **Garagem Digital**, uma aplicação web full stack desenvolvida de forma incremental.
-
-## Projeto em destaque
+## Projetos apresentados
 
 ### Garagem Digital
 
-Aplicação web full stack para catalogar projetos automotivos, reunir garagens pessoais, perfis, interações sociais e equipes.
+Produto autoral voltado à comunidade automotiva. O projeto possui duas fases:
 
-Principais recursos:
+- **Base web:** Flask, MySQL, HTML, CSS e JavaScript.
+- **Nova fase mobile:** Flutter, Dart, FastAPI, PostgreSQL, Docker e autenticação JWT.
 
-- Cadastro e login de usuários
-- Feed geral e garagem pessoal
-- Controle de propriedade por usuário
-- Upload de imagens e avatares
-- Perfis, bio e seguidores
-- Curtidas e comentários
-- Modal com visualização detalhada
-- API REST com Flask e MySQL
+[Ver repositório da Garagem Digital](https://github.com/raullferreiraa/garagem-digital)
 
-Repositório:
+### PostoGestão
 
-**https://github.com/raullferreiraa/garagem-digital**
+Sistema acadêmico client-server com interface desktop em Lazarus, API REST em Kotlin e Spring Boot, PostgreSQL e integração com ViaCEP.
 
-## Tecnologias
+## Tecnologias do portfólio
 
-- HTML
-- CSS
-- JavaScript
-- Python
-- Flask
-- MySQL
-- Git e GitHub
+- HTML5 semântico
+- CSS3 responsivo
+- Dados estruturados com Schema.org
+- Metadados Open Graph e Twitter Card
+- Práticas básicas de acessibilidade
+
+## Executar localmente
+
+O projeto é estático. Clone o repositório e abra `index.html` no navegador ou execute com uma extensão como Live Server.
+
+```bash
+git clone https://github.com/raullferreiraa/raullferreiraa.github.io.git
+cd raullferreiraa.github.io
+```
 
 ## Contato
 
-- LinkedIn: https://linkedin.com/in/raullferreiraa
-- GitHub: https://github.com/raullferreiraa
-- E-mail: raulsfr59@gmail.com
+- [LinkedIn](https://linkedin.com/in/raullferreiraa)
+- [GitHub](https://github.com/raullferreiraa)
+- [E-mail](mailto:raulsfr59@gmail.com)
