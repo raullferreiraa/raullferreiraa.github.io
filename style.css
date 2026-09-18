@@ -195,6 +195,9 @@ h1 em { display: block; color: var(--accent); font-style: normal; }
 .award-rank { min-width: 56px; padding: 5px 8px; border-radius: 8px; text-align: center; font-size: .76rem; font-weight: 700; }
 .award-gold { color: #facc6b; background: rgba(250, 204, 107, .12); }
 .award-silver { color: #cad5e2; background: rgba(202, 213, 226, .12); }
+.award-certificate { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; color: var(--accent); font-size: .78rem; font-weight: 700; text-decoration: none; }
+.award-certificate:hover { text-decoration: underline; }
+.award-certificate i { font-size: .7rem; }
 
 .contact-section { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: 80px; margin: 40px 0 32px; padding: clamp(30px, 6vw, 68px); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); background: linear-gradient(140deg, var(--accent-soft), rgba(255,255,255,.018)); }
 .contact-content { align-self: end; }

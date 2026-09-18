@@ -25,8 +25,8 @@ Sistema acadêmico client-server com interface desktop em Lazarus, API REST em K
 
 ## Reconhecimentos acadêmicos
 
-- Medalha de ouro — Canguru de Matemática Brasil (2019).
-- Medalha de prata — Olimpíada Brasileira de Astronomia e Astronáutica, OBA (2019).
+- Medalha de ouro — Canguru de Matemática Brasil (2019). [Ver certificado](https://raullferreiraa.github.io/certificados/canguru-ouro-2019.pdf).
+- Medalha de prata — Olimpíada Brasileira de Astronomia e Astronáutica, OBA (2019). [Ver certificado](https://raullferreiraa.github.io/certificados/oba-prata-2019.pdf).
 
 ## Tecnologias do portfólio
 
