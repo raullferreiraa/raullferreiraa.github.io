@@ -23,6 +23,11 @@ Produto autoral voltado à comunidade automotiva. O projeto possui duas fases:
 
 Sistema acadêmico client-server com interface desktop em Lazarus, API REST em Kotlin e Spring Boot, PostgreSQL e integração com ViaCEP.
 
+## Reconhecimentos acadêmicos
+
+- Medalha de ouro — Canguru de Matemática Brasil (2019).
+- Medalha de prata — Olimpíada Brasileira de Astronomia e Astronáutica, OBA (2019).
+
 ## Tecnologias do portfólio
 
 - HTML5 semântico
