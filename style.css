@@ -2479,19 +2479,48 @@ h2 {
   }
 }
 
+/* SVG icons render consistently without platform emoji substitution. */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: -0.15em;
+  overflow: visible;
+}
+.title-dot .icon {
+  width: 0.65em;
+  height: 0.65em;
+  vertical-align: 0.08em;
+}
+.art-star .icon,
+.medal .icon {
+  display: block;
+}
+.contact-arrow .icon {
+  width: 0.65em;
+  height: 0.65em;
+}
+.layer-icon .icon,
+.tech-icon .icon {
+  vertical-align: 0;
+}
+.location-note .icon {
+  margin-left: 3px;
+}
 /* Balanced actions: visible controls with restrained emphasis. */
 .button-primary {
-  background: #285b9e;
+  background: #243b5b;
   color: #fff;
-  border-color: #4574b0;
+  border-color: #415875;
   box-shadow: none;
 }
 .button-primary:hover {
-  background: #326bb6;
+  background: #304f76;
 }
 .hero-actions .text-link {
   border: 1px solid #354359;
-  background: #151d29;
+  background: transparent;
   min-height: 48px;
   padding: 11px 17px;
   border-radius: 6px;
@@ -2503,7 +2532,7 @@ h2 {
   border-color: #6285b1;
 }
 .header-contact {
-  background: #151d28;
+  background: transparent;
   border-color: #34445b;
   min-height: 42px;
   font-weight: 500;
@@ -2514,8 +2543,8 @@ h2 {
   border-color: #6d9cdf;
 }
 .project-link {
-  background: #1b2a3e;
-  border: 1px solid #354e70;
+  background: #17202d;
+  border: 1px solid #344156;
   border-radius: 6px;
   padding: 12px 16px;
   color: #d8e6fa;
@@ -2534,7 +2563,7 @@ h2 {
   padding: 9px 13px;
   font-size: 11px;
   font-weight: 500;
-  background: #182230;
+  background: transparent;
   border-color: #3d516c;
   color: #d9e5f5;
 }
@@ -2562,7 +2591,7 @@ h2 {
   padding: 12px 18px;
   border: 1px solid #35455b;
   border-radius: 6px;
-  background: #17212e;
+  background: transparent;
   color: #dce6f4;
   box-shadow: none;
   transition:
@@ -2575,8 +2604,8 @@ h2 {
   color: #fff;
 }
 .social-links .contact-card-linkedin {
-  background: #1d324e;
-  border-color: #45678f;
+  background: #182637;
+  border-color: #3b516d;
   color: #e6f0ff;
 }
 .social-links .contact-card-linkedin:hover {

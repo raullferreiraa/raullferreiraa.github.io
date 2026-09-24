@@ -10,7 +10,7 @@ if (copyButton && navigator.clipboard && window.isSecureContext) {
     clearTimeout(resetTimer);
     try {
       await navigator.clipboard.writeText("raulsfr59@gmail.com");
-      copyButton.textContent = "Copiado ✓";
+      copyButton.textContent = "Copiado";
       copyStatus.textContent = "Endereço de e-mail copiado.";
     } catch {
       copyButton.textContent = "Tente novamente";
