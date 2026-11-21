@@ -1,12 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0d1119" />
+  <rect width="64" height="64" rx="14" fill="#090c12" />
+  <rect
+    x="1.5"
+    y="1.5"
+    width="61"
+    height="61"
+    rx="12.5"
+    fill="none"
+    stroke="#85baff"
+    stroke-opacity="0.28"
+  />
   <text
     x="10"
     y="44"
     fill="#85baff"
     font-family="Arial,sans-serif"
-    font-size="38"
+    font-size="36"
     font-weight="700"
+    letter-spacing="-1"
   >
     rf.
   </text>

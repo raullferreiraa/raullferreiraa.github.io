@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0d1119" />
+    <meta name="theme-color" content="#090c12" />
     <meta
       name="description"
       content="Raul Ferreira — desenvolvedor Full Stack em formação. Projetos web e mobile com Flutter, FastAPI, Python, Kotlin e PostgreSQL. Ciência da Computação na UVV."
@@ -53,8 +53,10 @@
       type="font/woff2"
       crossorigin
     />
-    <link rel="stylesheet" href="style.css?v=20260924-icons" />
-    <script src="script.js?v=20260924-icons" defer></script>
+    <link rel="stylesheet" href="style.css?v=20261121-v3" />
+    <script src="assets/vendor/gsap.min.js?v=3.15.1" defer></script>
+    <script src="assets/vendor/ScrollTrigger.min.js?v=3.15.1" defer></script>
+    <script src="script.js?v=20261121-v3" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -75,20 +77,84 @@
     </script>
   </head>
   <body>
+    <div class="ambient-canvas" aria-hidden="true">
+      <div class="ambient-grid"></div>
+      <div class="ambient-glow"></div>
+    </div>
+
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
     <header class="site-header">
       <div class="shell header-inner">
         <a class="brand" href="#inicio" aria-label="Raul Ferreira, início"
           >rf<span>.</span></a
         >
         <nav class="navigation" aria-label="Navegação principal">
-          <a href="#projetos">Projetos</a><a href="#sobre">Sobre</a
-          ><a href="#tecnologias">Stack</a><a href="#formacao">Formação</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#tecnologias">Stack</a>
+          <a href="#formacao">Formação</a>
         </nav>
-        <a class="header-contact" href="#contato"
-          >Vamos conversar
-          <span aria-hidden="true"
-            ><svg
+        <div class="header-actions">
+          <a class="header-contact" href="#contato"
+            >Vamos conversar
+            <span class="arrow-glyph" aria-hidden="true"
+              ><svg
+                class="icon icon-arrow-up-right"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 18 18 6M6 6h12v12" /></svg></span
+          ></a>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            aria-label="Abrir menu de navegação"
+          >
+            <svg
+              class="icon menu-icon-open"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 7h16M4 12h16M4 17h12" />
+            </svg>
+            <svg
+              class="icon menu-icon-close"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-nav" id="mobile-nav" hidden>
+        <nav class="shell mobile-nav-inner" aria-label="Navegação mobile">
+          <a href="#projetos">Projetos</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#tecnologias">Stack</a>
+          <a href="#formacao">Formação</a>
+          <a href="#contato" class="mobile-nav-cta"
+            >Vamos conversar
+            <svg
               class="icon icon-arrow-up-right"
               viewBox="0 0 24 24"
               fill="none"
@@ -99,29 +165,217 @@
               aria-hidden="true"
               focusable="false"
             >
-              <path d="M6 18 18 6M6 6h12v12" /></svg></span
-        ></a>
+              <path d="M6 18 18 6M6 6h12v12" /></svg
+          ></a>
+        </nav>
       </div>
+      <div class="scroll-progress" aria-hidden="true"></div>
     </header>
+
     <main id="conteudo">
-      <section class="hero shell" id="inicio" aria-labelledby="hero-title">
-        <div class="hero-top">
-          <span class="eyebrow"
-            >RAUL FERREIRA <span class="eyebrow-divider">/</span> FULL STACK &
-            MOBILE</span
-          ><span class="availability"
-            ><span class="status-dot"></span> Disponível para estágio</span
-          >
-        </div>
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <p class="hero-intro">Pensamento curioso. Código com intenção.</p>
-            <h1 id="hero-title">
-              Da primeira ideia<br />à última
-              <span class="serif-word">camada.</span
-              ><span class="title-dot" aria-hidden="true"
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <canvas class="hero-dotgrid" aria-hidden="true"></canvas>
+
+        <div class="shell hero-shell">
+          <div class="hero-top">
+            <span class="hero-role">Raul Ferreira · Full Stack &amp; Mobile</span>
+            <span class="availability"
+              ><span class="status-dot"></span> Disponível para estágio</span
+            >
+          </div>
+
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="hero-intro" data-hero-enter>
+                Pensamento curioso. Código com intenção.
+              </p>
+              <h1 id="hero-title" data-hero-enter>
+                Da primeira ideia<br />à última
+                <span class="serif-word">camada.</span>
+              </h1>
+              <p class="hero-lead" data-hero-enter>
+                Sou <strong>Raul Ferreira</strong>, desenvolvedor full stack em
+                formação. Conecto interfaces, APIs e dados para transformar
+                ideias em experiências web e mobile.
+              </p>
+              <div class="hero-actions" data-hero-enter>
+                <a class="button button-primary" href="#projetos"
+                  >Conheça meus projetos
+                  <span class="arrow-glyph" aria-hidden="true"
+                    ><svg
+                      class="icon icon-arrow-up-right"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                ></a>
+                <a
+                  class="text-link"
+                  href="Curriculo_Raul_Silva_Ferreira.pdf"
+                  download
+                  >Baixar currículo
+                  <span class="arrow-glyph" aria-hidden="true"
+                    ><svg
+                      class="icon icon-arrow-down"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M12 4v16m-7-7 7 7 7-7" /></svg></span
+                ></a>
+              </div>
+              <div class="hero-signature" data-hero-enter>
+                <img
+                  src="profile.jpg"
+                  alt="Foto de Raul Ferreira"
+                  width="48"
+                  height="48"
+                  fetchpriority="high"
+                />
+                <span
+                  >Ciência da Computação
+                  <span>Universidade Vila Velha · ES</span></span
+                >
+              </div>
+            </div>
+
+            <!-- Janela interativa das três camadas principais de engenharia -->
+            <div class="code-stage spotlight-card" data-hero-enter>
+              <div class="code-stage-bar">
+                <div class="window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+
+                <div
+                  class="code-tabs"
+                  role="tablist"
+                  aria-label="Explorar arquitetura por camada"
+                >
+                  <span class="code-tabs-pill" aria-hidden="true"></span>
+                  <button
+                    class="code-tab"
+                    type="button"
+                    role="tab"
+                    id="code-tab-flutter"
+                    aria-selected="true"
+                    aria-controls="code-panel-flutter"
+                    data-file="lib/features/cars/project_card.dart"
+                    tabindex="0"
+                  >
+                    Flutter
+                  </button>
+                  <button
+                    class="code-tab"
+                    type="button"
+                    role="tab"
+                    id="code-tab-fastapi"
+                    aria-selected="false"
+                    aria-controls="code-panel-fastapi"
+                    data-file="app/api/carros.py"
+                    tabindex="-1"
+                  >
+                    FastAPI
+                  </button>
+                  <button
+                    class="code-tab"
+                    type="button"
+                    role="tab"
+                    id="code-tab-sql"
+                    aria-selected="false"
+                    aria-controls="code-panel-sql"
+                    data-file="alembic/versions/evolucoes.sql"
+                    tabindex="-1"
+                  >
+                    PostgreSQL
+                  </button>
+                </div>
+              </div>
+
+              <div class="code-stage-meta">
+                <span class="code-filepath" id="code-filepath"
+                  >lib/features/cars/project_card.dart</span
+                >
+                <span class="code-layer-tag">Full Stack Workflow</span>
+              </div>
+
+              <div class="code-stage-body">
+                <pre
+                  class="code-panel"
+                  id="code-panel-flutter"
+                  role="tabpanel"
+                  aria-labelledby="code-tab-flutter"
+                ><code><span class="tk-kw">class</span> <span class="tk-ty">ProjectCard</span> <span class="tk-kw">extends</span> <span class="tk-ty">StatelessWidget</span> {
+  <span class="tk-kw">const</span> <span class="tk-fn">ProjectCard</span>({<span class="tk-kw">super</span>.key, <span class="tk-kw">required this</span>.car});
+  <span class="tk-kw">final</span> <span class="tk-ty">CarSummary</span> car;
+
+  <span class="tk-op">@override</span>
+  <span class="tk-ty">Widget</span> <span class="tk-fn">build</span>(<span class="tk-ty">BuildContext</span> context) {
+    <span class="tk-kw">return</span> <span class="tk-ty">GaronaSurface</span>(
+      title: car.displayTitle,
+      phase: car.currentStage,
+      specs: <span class="tk-st">'${car.year} · ${car.engineLabel}'</span>,
+    );
+  }
+}</code></pre>
+
+                <pre
+                  class="code-panel"
+                  id="code-panel-fastapi"
+                  role="tabpanel"
+                  aria-labelledby="code-tab-fastapi"
+                  hidden
+                ><code><span class="tk-op">@router.get</span>(<span class="tk-st">"/carros/{car_id}"</span>, response_model=<span class="tk-ty">CarDetailOut</span>)
+<span class="tk-kw">def</span> <span class="tk-fn">obter_projeto</span>(
+    car_id: <span class="tk-ty">UUID</span>,
+    db: <span class="tk-ty">Session</span> = <span class="tk-fn">Depends</span>(get_db),
+    viewer: <span class="tk-ty">User</span> | <span class="tk-kw">None</span> = <span class="tk-fn">Depends</span>(get_optional_user),
+) -&gt; <span class="tk-ty">CarDetailOut</span>:
+    <span class="tk-kw">return</span> carros_service.<span class="tk-fn">get_detail</span>(db, car_id, viewer)</code></pre>
+
+                <pre
+                  class="code-panel"
+                  id="code-panel-sql"
+                  role="tabpanel"
+                  aria-labelledby="code-tab-sql"
+                  hidden
+                ><code><span class="tk-kw">CREATE TABLE</span> <span class="tk-ty">carro_evolucoes</span> (
+    id             <span class="tk-ty">UUID</span> <span class="tk-kw">PRIMARY KEY</span>,
+    carro_id       <span class="tk-ty">UUID NOT NULL REFERENCES</span> carros(id),
+    titulo         <span class="tk-ty">VARCHAR</span>(140) <span class="tk-kw">NOT NULL</span>,
+    registrado_em  <span class="tk-ty">TIMESTAMPTZ NOT NULL DEFAULT</span> now()
+);
+<span class="tk-kw">CREATE INDEX</span> idx_evolucoes_carro
+    <span class="tk-kw">ON</span> carro_evolucoes (carro_id, registrado_em <span class="tk-kw">DESC</span>);</code></pre>
+              </div>
+
+              <div class="code-stage-foot">
+                <span>Interface · API REST · Persistência</span>
+                <span>Flutter · FastAPI · PostgreSQL · Docker</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-bottom">
+            <span
+              >BASEADO EM VILA VELHA, ES <span class="small-dot"></span
+            ></span>
+            <span>WEB · MOBILE · APIs</span>
+            <a href="#projetos"
+              >Continue explorando
+              <span class="arrow-glyph" aria-hidden="true"
                 ><svg
-                  class="icon icon-asterisk"
+                  class="icon icon-arrow-down"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -131,164 +385,9 @@
                   aria-hidden="true"
                   focusable="false"
                 >
-                  <path
-                    d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M5.6 18.4 18.4 5.6"
-                  /></svg
-              ></span>
-            </h1>
-            <p class="hero-lead">
-              Sou <strong>Raul Ferreira</strong>, desenvolvedor full stack em
-              formação. Conecto interfaces, APIs e dados para transformar ideias
-              em experiências web e mobile.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#projetos"
-                >Conheça meus projetos
-                <span aria-hidden="true"
-                  ><svg
-                    class="icon icon-arrow-up-right"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path d="M6 18 18 6M6 6h12v12" /></svg></span></a
-              ><a
-                class="text-link"
-                href="Curriculo_Raul_Silva_Ferreira.pdf"
-                download
-                >Baixar currículo
-                <span aria-hidden="true"
-                  ><svg
-                    class="icon icon-arrow-down"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path d="M12 4v16m-7-7 7 7 7-7" /></svg></span
-              ></a>
-            </div>
-            <div class="hero-signature">
-              <img
-                src="profile.jpg"
-                alt="Foto de Raul Ferreira"
-                width="44"
-                height="44"
-                fetchpriority="high"
-              /><span
-                >Ciência da Computação
-                <span>Universidade Vila Velha · ES</span></span
-              >
-            </div>
+                  <path d="M12 4v16m-7-7 7 7 7-7" /></svg></span
+            ></a>
           </div>
-          <div
-            class="hero-art"
-            role="img"
-            aria-label="Ilustração das camadas de desenvolvimento: Flutter e React na interface, FastAPI e Python na API, PostgreSQL e Docker nos dados e infraestrutura."
-          >
-            <div class="art-topline">
-              <span
-                ><span class="tiny-cross">+</span> ANATOMIA DE UMA IDEIA</span
-              ><span>FIG. 01</span>
-            </div>
-            <span class="art-axis axis-top">Y</span
-            ><span class="art-axis axis-bottom">X</span>
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-            <div class="stack-layer layer-data">
-              <div class="layer-top">
-                <span class="layer-icon"
-                  ><svg
-                    class="icon icon-database"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <ellipse cx="12" cy="5" rx="8" ry="3" />
-                    <path
-                      d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"
-                    /></svg></span
-                ><span class="layer-index">03 / PERSISTIR</span>
-              </div>
-              <div class="layer-text">
-                <strong>Dados & infraestrutura</strong
-                ><span>PostgreSQL · Docker</span>
-              </div>
-            </div>
-            <div class="stack-layer layer-api">
-              <div class="layer-top">
-                <span class="layer-icon">{ }</span
-                ><span class="layer-index">02 / CONECTAR</span>
-              </div>
-              <div class="layer-text">
-                <strong>Lógica & API</strong><span>FastAPI · Python</span>
-              </div>
-            </div>
-            <div class="stack-layer layer-ui">
-              <div class="layer-top">
-                <span class="layer-icon">&lt;/&gt;</span
-                ><span class="layer-index">01 / INTERAGIR</span>
-              </div>
-              <div class="layer-text">
-                <strong>A experiência começa aqui.</strong
-                ><span>Flutter · React</span>
-              </div>
-            </div>
-            <span class="art-star" aria-hidden="true"
-              ><svg
-                class="icon icon-asterisk"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path
-                  d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M5.6 18.4 18.4 5.6"
-                /></svg
-            ></span>
-            <div class="art-bottomline">
-              <span>DO QUE VOCÊ VÊ. AO QUE FAZ FUNCIONAR.</span
-              ><span class="status-dot"></span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-bottom">
-          <span>BASEADO EM VILA VELHA, ES <span class="small-dot"></span></span
-          ><span>WEB · MOBILE · APIs</span
-          ><a href="#projetos"
-            >Continue explorando
-            <span aria-hidden="true"
-              ><svg
-                class="icon icon-arrow-down"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M12 4v16m-7-7 7 7 7-7" /></svg></span
-          ></a>
         </div>
       </section>
 
@@ -298,21 +397,22 @@
         aria-labelledby="projects-title"
       >
         <div class="shell">
-          <div class="section-label">
-            <span>01 / PROJETOS SELECIONADOS</span
-            ><span>IDEIAS QUE SAÍRAM DO PAPEL</span>
-          </div>
           <div class="section-heading">
-            <h2 id="projects-title">
-              Construir. Aprender.<br /><span class="serif-word">Ir além.</span>
-            </h2>
+            <div>
+              <span class="section-kicker">Projetos</span>
+              <h2 id="projects-title">
+                Construir. Aprender.<br /><span class="serif-word"
+                  >Ir além.</span
+                >
+              </h2>
+            </div>
             <a
               class="text-link"
               href="https://github.com/raullferreiraa"
               target="_blank"
               rel="noopener noreferrer"
               >Explore meu GitHub
-              <span aria-hidden="true"
+              <span class="arrow-glyph" aria-hidden="true"
                 ><svg
                   class="icon icon-arrow-up-right"
                   viewBox="0 0 24 24"
@@ -327,243 +427,314 @@
                   <path d="M6 18 18 6M6 6h12v12" /></svg></span
             ></a>
           </div>
-          <article class="featured-project">
-            <div class="project-main">
-              <div class="project-visual" aria-hidden="true">
-                <div class="visual-top">
-                  <span>GD / GARAGEM DIGITAL</span
-                  ><span
-                    >WEB
+
+          <!-- PORTAL DO GARONA -->
+          <article
+            class="garona-showcase"
+            aria-labelledby="garona-heading"
+            data-reveal
+          >
+            <div class="garona-card">
+              <div class="garona-ambient" aria-hidden="true"></div>
+
+              <div class="garona-hero-band">
+                <div class="garona-brand-copy">
+                  <div class="garona-status-row">
+                    <span class="garona-beta-signal">
+                      <span class="garona-live-dot" aria-hidden="true"></span>
+                      Beta fechado
+                    </span>
+                    <span class="garona-champagne-tag">Projeto autoral</span>
+                  </div>
+
+                  <div class="garona-wordmark-wrap">
                     <svg
-                      class="icon icon-arrow-right"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
+                      class="garona-wordmark-svg"
+                      viewBox="0 0 880 220"
+                      role="img"
+                      aria-label="GARONA"
                       focusable="false"
                     >
-                      <path d="M4 12h16m-7-7 7 7-7 7" />
+                      <title>Garona</title>
+                      <path
+                        d="M 160.4 56.5 L 86.3 56.5 A 35.4 35.4 0 0 0 50.9 91.9 L 50.9 128.1 A 35.4 35.4 0 0 0 86.3 163.5 L 144.4 163.5 A 23 23 0 0 0 167.4 140.5 L 167.4 107.9 L 115 107.9 L 115 125.5 L 147.9 125.5 L 147.9 138.2 A 5.9 5.9 0 0 1 142 144 L 83.4 144 A 13 13 0 0 1 70.4 131 L 70.4 89 A 13 13 0 0 1 83.4 76 L 151.9 76 Z"
+                        fill="#F1F1E7"
+                      />
+                      <path
+                        d="M 226.9 58 L 261 58 L 303 162 L 282 162 L 272.5 138.6 L 215.4 138.6 L 205.9 162 L 184.9 162 Z M 244 67.9 L 222.3 121.4 L 265.6 121.4 Z"
+                        fill="#F1F1E7"
+                      />
+                      <path
+                        d="M 322 58 L 402.1 58 A 28.1 28.1 0 0 1 430.2 86.1 L 430.2 93.4 A 23.9 23.9 0 0 1 406.3 117.3 L 404.4 117.3 L 430.2 162 L 407.8 162 L 382 117.3 L 341.5 117.3 L 341.5 162 L 322 162 Z M 341.5 77.5 L 341.5 97.8 L 400.6 97.8 A 10.1 10.1 0 0 0 410.7 87.7 L 410.7 87.6 A 10.1 10.1 0 0 0 400.6 77.5 Z"
+                        fill="#F1F1E7"
+                      />
+                      <path
+                        d="M 450.7 122.2 L 450.7 82.2 A 25.7 25.7 0 0 1 476.4 56.5 L 538.4 56.5 A 25.7 25.7 0 0 1 564.1 82.2 L 564.1 88.2 L 544.6 97.6 L 544.6 89 A 13 13 0 0 0 531.6 76 L 483.2 76 A 13 13 0 0 0 470.2 89 L 470.2 112.8 Z"
+                        fill="#D6EA78"
+                      />
+                      <path
+                        d="M 564.1 97.8 L 564.1 137.8 A 25.7 25.7 0 0 1 538.4 163.5 L 476.4 163.5 A 25.7 25.7 0 0 1 450.7 137.8 L 450.7 131.8 L 470.2 122.4 L 470.2 131 A 13 13 0 0 0 483.2 144 L 531.6 144 A 13 13 0 0 0 544.6 131 L 544.6 107.2 Z"
+                        fill="#D6EA78"
+                      />
+                      <path
+                        d="M 589.1 58 L 614 58 L 672.4 132.8 L 672.4 58 L 691.9 58 L 691.9 162 L 667 162 L 608.6 87.2 L 608.6 162 L 589.1 162 Z"
+                        fill="#F1F1E7"
+                      />
+                      <path
+                        d="M 752.9 58 L 787.1 58 L 829.1 162 L 808 162 L 798.6 138.6 L 741.4 138.6 L 732 162 L 710.9 162 Z M 770 67.9 L 748.4 121.4 L 791.6 121.4 Z"
+                        fill="#F1F1E7"
+                      />
                     </svg>
-                    MOBILE</span
-                  >
+                  </div>
+
+                  <h3 class="garona-headline" id="garona-heading">
+                    Mais que carro. <span>É projeto.</span>
+                  </h3>
+
+                  <p class="garona-pitch">
+                    Aplicativo mobile autoral criado para quem vive a cultura
+                    automotiva na prática. Nasceu de um primeiro experimento web
+                    simples, mas logo ficou claro que essa experiência precisava
+                    estar no bolso de quem monta e acompanha carro no dia a dia
+                    — por isso o projeto foi reconstruído do zero em Flutter,
+                    FastAPI e PostgreSQL.
+                  </p>
+
+                  <p class="garona-origin">
+                    Hoje reúne garagens pessoais com ficha técnica e galeria,
+                    diário de evoluções, equipes e encontros no mapa, operando
+                    em beta fechado enquanto evolui rumo à publicação oficial
+                    nas lojas (Google Play e App Store).
+                  </p>
+
+                  <div class="garona-ctas">
+                    <a
+                      class="garona-cta-primary"
+                      href="https://garona.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>garona.app</span>
+                      <svg
+                        class="icon icon-arrow-up-right"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" />
+                      </svg>
+                    </a>
+                    <a
+                      class="garona-cta-secondary"
+                      href="https://instagram.com/garona.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg
+                        class="icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <rect
+                          x="2.5"
+                          y="2.5"
+                          width="19"
+                          height="19"
+                          rx="5"
+                        />
+                        <circle cx="12" cy="12" r="4.2" />
+                        <circle
+                          cx="17.5"
+                          cy="6.5"
+                          r="1"
+                          fill="currentColor"
+                          stroke="none"
+                        />
+                      </svg>
+                      <span>@garona.app</span>
+                    </a>
+                    <a
+                      class="garona-cta-secondary"
+                      href="https://github.com/raullferreiraa/garona"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>Apresentação no GitHub</span>
+                      <svg
+                        class="icon icon-arrow-up-right"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-                <span class="visual-watermark">GD</span
-                ><svg class="car-drawing" viewBox="0 0 600 240" fill="none">
-                  <path
-                    d="M49 159 72 123 153 106 226 49 354 49 434 112 528 134 550 159 546 186 487 186M163 186H385M64 186H45V159H71"
-                  />
-                  <path
-                    d="m175 105 62-44h106l62 49-230-5ZM271 63v44M431 114l-23 12H193l-30-15M197 140h24M301 140h24M83 142h45l-10 14H72M484 144h40M174 169h204"
-                  />
-                  <circle cx="117" cy="183" r="43" />
-                  <circle cx="117" cy="183" r="25" />
-                  <circle cx="439" cy="183" r="43" />
-                  <circle cx="439" cy="183" r="25" />
-                  <path d="m100 165 34 35m0-35-34 35m322-35 34 35m0-35-34 35" />
-                </svg>
-                <div class="visual-word">
-                  Paixão automotiva.<br /><span>Agora, conectada.</span>
-                </div>
-                <div class="visual-bottom">
-                  <span>UMA COMUNIDADE. MUITAS HISTÓRIAS.</span
-                  ><span
-                    ><svg
-                      class="icon icon-arrow-up-right"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
+
+                <!-- Emblema geométrico da marca (sem imagens/fotos) -->
+                <div class="garona-brand-specimen" aria-hidden="true">
+                  <div class="specimen-rings">
+                    <span class="specimen-ring ring-outer"></span>
+                    <span class="specimen-ring ring-inner"></span>
+                  </div>
+                  <div class="specimen-symbol-box">
+                    <svg
+                      class="specimen-symbol-svg"
+                      viewBox="0 0 256 256"
+                      width="116"
+                      height="116"
                       focusable="false"
                     >
-                      <path d="M6 18 18 6M6 6h12v12" /></svg
-                  ></span>
+                      <path
+                        class="symbol-half symbol-top"
+                        d="M 30 145.9 L 30 78.1 A 46.1 46.1 0 0 1 76.1 32 L 179.9 32 A 46.1 46.1 0 0 1 226 78.1 L 226 82.1 L 185 101.8 L 185 91 A 18 18 0 0 0 167 73 L 89 73 A 18 18 0 0 0 71 91 L 71 126.2 Z"
+                        fill="#D6EA78"
+                      />
+                      <path
+                        class="symbol-half symbol-bot"
+                        d="M 226 110.1 L 226 177.9 A 46.1 46.1 0 0 1 179.9 224 L 76.1 224 A 46.1 46.1 0 0 1 30 177.9 L 30 173.9 L 71 154.2 L 71 165 A 18 18 0 0 0 89 183 L 167 183 A 18 18 0 0 0 185 165 L 185 129.8 Z"
+                        fill="#D6EA78"
+                      />
+                    </svg>
+                  </div>
                 </div>
-                <span class="visual-coordinate"
-                  >DESENVOLVIMENTO EM MOVIMENTO</span
-                >
               </div>
-              <div class="project-content">
-                <div class="project-meta">
-                  <span class="status-dot"></span> PRODUTO AUTORAL
-                  <span class="project-state">Em evolução</span>
+
+              <!-- Pilares do produto -->
+              <section
+                class="garona-capabilities"
+                aria-label="Funcionalidades principais do Garona"
+              >
+                <div class="garona-cap-card">
+                  <h4>Garagem pessoal</h4>
+                  <p>
+                    Ficha técnica completa, história do veículo, foto de capa e
+                    galeria com recorte.
+                  </p>
                 </div>
-                <h3>
-                  Garagem Digital<span aria-hidden="true"
-                    ><svg
-                      class="icon icon-arrow-up-right"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path d="M6 18 18 6M6 6h12v12" /></svg
-                  ></span>
-                </h3>
-                <p class="project-summary">
-                  Uma comunidade mobile para quem vê um carro como o começo de
-                  uma história.
-                </p>
-                <p>
-                  Garagens pessoais, registros de carros e equipes automotivas.
-                  Um projeto que nasceu na web e está sendo reconstruído para
-                  mobile, com uma nova experiência e uma arquitetura preparada
-                  para evoluir.
-                </p>
-                <div class="tags" aria-label="Stack atual da Garagem Digital">
-                  <span>Flutter</span><span>Dart</span><span>FastAPI</span
-                  ><span>Python</span><span>PostgreSQL</span><span>Docker</span
-                  ><span>JWT</span>
+                <div class="garona-cap-card">
+                  <h4>Diário &amp; etapas</h4>
+                  <p>
+                    Linha do tempo de evoluções conectada às etapas planejadas,
+                    em andamento e concluídas.
+                  </p>
                 </div>
-                <a
-                  class="project-link"
-                  href="https://github.com/raullferreiraa/garagem-digital"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Conhecer o repositório
-                  <span aria-hidden="true"
-                    ><svg
-                      class="icon icon-arrow-up-right"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path d="M6 18 18 6M6 6h12v12" /></svg></span
-                ></a>
-              </div>
+                <div class="garona-cap-card">
+                  <h4>Comunidade &amp; encontros</h4>
+                  <p>
+                    Perfis, feed, equipes com cargos, conversas e encontros com
+                    localização no mapa.
+                  </p>
+                </div>
+                <div class="garona-cap-card">
+                  <h4>Privacidade opcional</h4>
+                  <p>
+                    Camada opcional de proteção de placas no envio de fotos e
+                    controle de mídia privada.
+                  </p>
+                </div>
+              </section>
+
+              <!-- Engenharia e ferramentas organizadas por camada -->
+              <section
+                class="garona-engineering"
+                aria-label="Engenharia e ferramentas do Garona"
+              >
+                <div class="garona-eng-head">
+                  <h4>Engenharia &amp; ferramentas</h4>
+                  <span>Arquitetura modular da interface ao servidor</span>
+                </div>
+
+                <div class="garona-eng-grid">
+                  <article class="garona-eng-card">
+                    <div class="garona-eng-top">
+                      <h5>Aplicativo</h5>
+                    </div>
+                    <p>
+                      Interface multiplataforma, rascunhos locais isolados por
+                      conta, recorte de fotos e detecção opcional de placas.
+                    </p>
+                    <div class="garona-tags">
+                      <span>Flutter</span>
+                      <span>Dart</span>
+                      <span>Dio</span>
+                      <span>Mapas &amp; GPS</span>
+                    </div>
+                  </article>
+
+                  <article class="garona-eng-card">
+                    <div class="garona-eng-top">
+                      <h5>API &amp; Segurança</h5>
+                    </div>
+                    <p>
+                      API REST stateless com autorização no servidor, refresh
+                      tokens rotativos e tratamento seguro de uploads.
+                    </p>
+                    <div class="garona-tags">
+                      <span>FastAPI</span>
+                      <span>Python</span>
+                      <span>JWT &amp; Argon2</span>
+                      <span>Pillow</span>
+                    </div>
+                  </article>
+
+                  <article class="garona-eng-card">
+                    <div class="garona-eng-top">
+                      <h5>Dados &amp; Infraestrutura</h5>
+                    </div>
+                    <p>
+                      45 migrations versionadas, storage privado de mídia, Web
+                      Push durável e envio transacional de e-mails.
+                    </p>
+                    <div class="garona-tags">
+                      <span>PostgreSQL</span>
+                      <span>SQLAlchemy</span>
+                      <span>Alembic</span>
+                      <span>Docker</span>
+                      <span>Supabase</span>
+                      <span>Render</span>
+                      <span>Cloudflare</span>
+                      <span>Resend</span>
+                    </div>
+                  </article>
+
+                  <article class="garona-eng-card">
+                    <div class="garona-eng-top">
+                      <h5>Qualidade &amp; CI</h5>
+                    </div>
+                    <p>
+                      140+ suítes automatizadas entre backend e app, migrações
+                      validadas em CI e análise estática contínua.
+                    </p>
+                    <div class="garona-tags">
+                      <span>pytest</span>
+                      <span>Flutter Test</span>
+                      <span>GitHub Actions</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
             </div>
-            <div class="project-evolution">
-              <div class="evolution-intro">
-                <span class="eyebrow">UM PRODUTO, DUAS FASES</span>
-                <h4>A evolução também<br />faz parte do projeto.</h4>
-              </div>
-              <div class="evolution-step">
-                <span class="phase-index">01 / BASE WEB</span
-                ><strong>Flask + MySQL</strong>
-                <p>
-                  Uma aplicação social completa: carros, feed, perfis,
-                  seguidores, curtidas, comentários, diário de evolução, galeria
-                  e equipes.
-                </p>
-              </div>
-              <div class="evolution-step current">
-                <span class="phase-index"
-                  >02 / NOVA FASE MOBILE
-                  <span aria-hidden="true"
-                    ><svg
-                      class="icon icon-arrow-up-right"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path d="M6 18 18 6M6 6h12v12" /></svg></span></span
-                ><strong>Flutter + FastAPI</strong>
-                <p>
-                  PostgreSQL em Docker, autenticação JWT, renovação de sessão e
-                  armazenamento seguro de tokens. Base compatível com futura
-                  expansão para iOS.
-                </p>
-              </div>
-            </div>
-            <div
-              class="project-results"
-              aria-label="Funcionalidades implementadas na fase mobile"
-            >
-              <div>
-                <span aria-hidden="true"
-                  ><svg
-                    class="icon icon-turn-right"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path d="M5 4v12h15m-5-5 5 5-5 5" /></svg
-                ></span>
-                <p>
-                  <strong>Sessão persistente</strong
-                  ><span>Login e refresh automático</span>
-                </p>
-              </div>
-              <div>
-                <span aria-hidden="true"
-                  ><svg
-                    class="icon icon-turn-right"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path d="M5 4v12h15m-5-5 5 5-5 5" /></svg
-                ></span>
-                <p>
-                  <strong>Sua garagem</strong
-                  ><span>Cadastro e upload com recorte</span>
-                </p>
-              </div>
-              <div>
-                <span aria-hidden="true"
-                  ><svg
-                    class="icon icon-turn-right"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path d="M5 4v12h15m-5-5 5 5-5 5" /></svg
-                ></span>
-                <p>
-                  <strong>Equipes conectadas</strong
-                  ><span>Criação, entrada e gestão de pedidos</span>
-                </p>
-              </div>
-            </div>
-            <details class="project-details">
-              <summary>
-                Mais sobre a base web <span aria-hidden="true">+</span>
-              </summary>
-              <p>
-                A primeira versão foi construída com Python, Flask, MySQL, HTML,
-                CSS e JavaScript. Inclui API própria, autenticação, CRUD de
-                carros, controle de propriedade por usuário, feed e garagem
-                pessoal, perfis com avatar e bio, seguidores, curtidas e
-                comentários, visualização detalhada, upload de imagens, diário
-                de evolução, galeria e equipes.
-              </p>
-            </details>
           </article>
-          <article class="secondary-project">
+
+          <article class="secondary-project spotlight-card" data-reveal>
             <div class="secondary-symbol" aria-hidden="true">
               <span class="terminal-title"
                 >CLIENT
@@ -581,13 +752,12 @@
                   <path d="M3 12h18M7 8l-4 4 4 4m10-8 4 4-4 4" />
                 </svg>
                 SERVER</span
-              ><span class="terminal-code">&gt;_</span
-              ><span class="terminal-bottom">KOTLIN / LAZARUS</span>
+              >
+              <span class="terminal-code">&gt;_</span>
+              <span class="terminal-bottom">KOTLIN / LAZARUS</span>
             </div>
             <div class="secondary-content">
-              <div class="project-meta">
-                PROJETO ACADÊMICO <span>02 / DESKTOP</span>
-              </div>
+              <div class="project-meta">Projeto acadêmico · Desktop &amp; API</div>
               <h3>PostoGestão</h3>
               <p>
                 Gestão corporativa conectando uma interface desktop em Lazarus a
@@ -603,22 +773,20 @@
           </article>
         </div>
       </section>
+
       <section
         class="about shell section"
         id="sobre"
         aria-labelledby="about-title"
       >
-        <div class="section-label">
-          <span>02 / POR TRÁS DO CÓDIGO</span
-          ><span>CURIOSIDADE COMO PONTO DE PARTIDA</span>
-        </div>
-        <div class="about-grid">
+        <div class="about-grid" data-reveal>
           <div class="about-heading">
+            <span class="section-kicker">Sobre</span>
             <h2 id="about-title">
               Entender o todo.<br />Cuidar de
               <span class="serif-word">cada parte.</span>
             </h2>
-            <div class="about-identity">
+            <div class="about-identity spotlight-card">
               <img
                 src="profile.jpg"
                 alt="Raul Ferreira"
@@ -627,9 +795,9 @@
                 loading="lazy"
               />
               <div>
-                <strong>Raul Ferreira</strong
-                ><span>Estudante. Desenvolvedor. Curioso.</span
-                ><span class="location-note"
+                <strong>Raul Ferreira</strong>
+                <span>Estudante. Desenvolvedor. Curioso.</span>
+                <span class="location-note"
                   >Vila Velha, Espírito Santo
                   <svg
                     class="icon icon-arrow-up-right"
@@ -658,9 +826,9 @@
               <strong
                 >desenvolvimento full stack, arquitetura de APIs e produtos
                 mobile</strong
-              >. A Garagem Digital traduz esse caminho: de uma aplicação web a
-              uma nova experiência em Flutter, com decisões de arquitetura que
-              acompanham a evolução do produto.
+              >. O Garona traduz esse caminho: de um protótipo web simples até
+              uma aplicação em Flutter, FastAPI e PostgreSQL com decisões de
+              arquitetura que acompanham a evolução do produto.
             </p>
             <p>
               Busco uma oportunidade de estágio para aprender com uma equipe,
@@ -670,7 +838,8 @@
             <div class="about-notes">
               <span
                 ><span class="small-dot"></span> Disponível para estágio</span
-              ><span>Inglês · B1 intermediário</span>
+              >
+              <span>Inglês · B1 intermediário</span>
             </div>
           </div>
         </div>
@@ -681,40 +850,37 @@
         id="tecnologias"
         aria-labelledby="stack-title"
       >
-        <div class="section-label">
-          <span>03 / TECNOLOGIAS & PROCESSO</span
-          ><span>AS PEÇAS SE CONECTAM</span>
-        </div>
         <div class="section-heading">
-          <h2 id="stack-title">
-            Visão de produto.<br /><span class="serif-word"
-              >Da interface à infraestrutura.</span
-            >
-          </h2>
-          <p>Ferramentas que uso para<br /> tirar projetos do papel.</p>
+          <div>
+            <span class="section-kicker">Stack &amp; método</span>
+            <h2 id="stack-title">
+              Visão de produto.<br /><span class="serif-word"
+                >Da interface à infraestrutura.</span
+              >
+            </h2>
+          </div>
+          <p>Ferramentas que uso para<br />tirar projetos do papel.</p>
         </div>
-        <div class="tech-grid">
-          <article class="tech-card">
-            <span class="tech-icon" aria-hidden="true">&lt;/&gt;</span
-            ><span class="tech-number">01</span>
-            <h3>Frontend & Mobile</h3>
+        <div class="tech-grid" data-reveal>
+          <article class="tech-card spotlight-card">
+            <span class="tech-icon" aria-hidden="true">&lt;/&gt;</span>
+            <h3>Frontend &amp; Mobile</h3>
             <p>A experiência de quem usa.</p>
             <div class="tags">
               <span>Flutter</span><span>Dart</span><span>HTML</span
               ><span>CSS</span><span>JavaScript</span><span>React</span>
             </div>
           </article>
-          <article class="tech-card">
-            <span class="tech-icon" aria-hidden="true">{ }</span
-            ><span class="tech-number">02</span>
-            <h3>Backend & APIs</h3>
+          <article class="tech-card spotlight-card">
+            <span class="tech-icon" aria-hidden="true">{ }</span>
+            <h3>Backend &amp; APIs</h3>
             <p>A lógica que conecta tudo.</p>
             <div class="tags">
               <span>Python</span><span>FastAPI</span><span>Flask</span
               ><span>Kotlin</span><span>Spring Boot</span><span>Node.js</span>
             </div>
           </article>
-          <article class="tech-card">
+          <article class="tech-card spotlight-card">
             <span class="tech-icon" aria-hidden="true"
               ><svg
                 class="icon icon-database"
@@ -730,16 +896,16 @@
                 <ellipse cx="12" cy="5" rx="8" ry="3" />
                 <path
                   d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"
-                /></svg></span
-            ><span class="tech-number">03</span>
-            <h3>Dados & Infra</h3>
+                /></svg
+            ></span>
+            <h3>Dados &amp; Infra</h3>
             <p>Uma base para crescer.</p>
             <div class="tags">
               <span>PostgreSQL</span><span>MySQL</span><span>MariaDB</span
               ><span>SQL</span><span>Docker</span><span>Alembic</span>
             </div>
           </article>
-          <article class="tech-card">
+          <article class="tech-card spotlight-card">
             <span class="tech-icon" aria-hidden="true"
               ><svg
                 class="icon icon-git-branch"
@@ -755,8 +921,8 @@
                 <circle cx="6" cy="5" r="3" />
                 <circle cx="6" cy="19" r="3" />
                 <circle cx="18" cy="5" r="3" />
-                <path d="M6 8v8m12-8c0 6-12 2-12 8" /></svg></span
-            ><span class="tech-number">04</span>
+                <path d="M6 8v8m12-8c0 6-12 2-12 8" /></svg
+            ></span>
             <h3>Processo</h3>
             <p>Clareza em cada entrega.</p>
             <div class="tags">
@@ -766,32 +932,32 @@
             </div>
           </article>
         </div>
-        <div class="process">
+        <div class="process spotlight-card" data-reveal>
           <div>
-            <span class="eyebrow">COMO EU TRABALHO</span>
+            <span class="section-kicker">Como eu trabalho</span>
             <h3>Pequenas etapas.<br />Evolução consistente.</h3>
             <p>
               Organizo o trabalho com Git e GitHub, mantendo mudanças pequenas,
               testáveis e documentadas.
             </p>
           </div>
-          <ol>
+          <ol class="process-timeline">
             <li>
-              <span>01</span>
+              <span class="process-dot" aria-hidden="true"></span>
               <div>
                 <strong>Entender antes de construir</strong>
                 <p>Começo pelo problema e pelo fluxo do usuário.</p>
               </div>
             </li>
             <li>
-              <span>02</span>
+              <span class="process-dot" aria-hidden="true"></span>
               <div>
                 <strong>Evoluir com segurança</strong>
                 <p>Issues claras, branches específicas e testes locais.</p>
               </div>
             </li>
             <li>
-              <span>03</span>
+              <span class="process-dot" aria-hidden="true"></span>
               <div>
                 <strong>Comunicar decisões</strong>
                 <p>Pull requests com contexto, escolhas e próximos passos.</p>
@@ -806,16 +972,13 @@
         id="formacao"
         aria-labelledby="education-title"
       >
-        <div class="section-label">
-          <span>04 / FORMAÇÃO & CONQUISTAS</span
-          ><span>UMA TRAJETÓRIA EM CONSTRUÇÃO</span>
-        </div>
-        <div class="education-grid">
+        <div class="education-grid" data-reveal>
           <div>
+            <span class="section-kicker">Formação &amp; conquistas</span>
             <h2 id="education-title">
               A curiosidade<br /><span class="serif-word">vem de longe.</span>
             </h2>
-            <div class="degree">
+            <div class="degree spotlight-card">
               <span class="degree-mark" aria-hidden="true"
                 ><svg
                   class="icon icon-arrow-up-right"
@@ -828,14 +991,15 @@
                   aria-hidden="true"
                   focusable="false"
                 >
-                  <path d="M6 18 18 6M6 6h12v12" /></svg></span
-              ><span class="eyebrow">2023 — PRESENTE</span>
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+              ></span>
+              <span class="degree-period">2023 — presente</span>
               <h3>Ciência da Computação</h3>
               <p>Bacharelado · Universidade Vila Velha (UVV)</p>
             </div>
           </div>
-          <div class="certifications">
-            <h3>Formação complementar <span>DESTAQUES</span></h3>
+          <div class="certifications spotlight-card">
+            <h3>Formação complementar <span>Destaques</span></h3>
             <ul>
               <li>
                 <div><strong>Java Fundamentals</strong><span>Oracle</span></div>
@@ -861,7 +1025,7 @@
               target="_blank"
               rel="noopener noreferrer"
               >Todas as certificações no currículo
-              <span aria-hidden="true"
+              <span class="arrow-glyph" aria-hidden="true"
                 ><svg
                   class="icon icon-arrow-up-right"
                   viewBox="0 0 24 24"
@@ -877,15 +1041,15 @@
             ></a>
           </div>
         </div>
-        <div class="recognitions">
+        <div class="recognitions" data-reveal>
           <div class="recognitions-heading">
-            <span class="eyebrow">RECONHECIMENTOS ACADÊMICOS</span>
+            <span class="section-kicker">Reconhecimentos acadêmicos</span>
             <h3>
               Um olhar para os problemas.<br />Desde os primeiros desafios.
             </h3>
           </div>
           <div class="awards-grid">
-            <article class="award">
+            <article class="award spotlight-card">
               <div class="medal gold" aria-hidden="true">
                 <span
                   ><svg
@@ -906,7 +1070,7 @@
                 ></span>
               </div>
               <div>
-                <span class="award-rank">OURO · 2019</span>
+                <span class="award-rank">Ouro · 2019</span>
                 <h4>Canguru de<br />Matemática Brasil</h4>
                 <p>Matemática</p>
                 <a
@@ -915,7 +1079,7 @@
                   rel="noopener noreferrer"
                   aria-label="Ver certificado da medalha de ouro no Canguru de Matemática Brasil (PDF)"
                   >Ver certificado
-                  <span aria-hidden="true"
+                  <span class="arrow-glyph" aria-hidden="true"
                     ><svg
                       class="icon icon-arrow-up-right"
                       viewBox="0 0 24 24"
@@ -931,7 +1095,7 @@
                 ></a>
               </div>
             </article>
-            <article class="award">
+            <article class="award spotlight-card">
               <div class="medal silver" aria-hidden="true">
                 <span
                   ><svg
@@ -952,7 +1116,7 @@
                 ></span>
               </div>
               <div>
-                <span class="award-rank">PRATA · 2019</span>
+                <span class="award-rank">Prata · 2019</span>
                 <h4>Olimpíada Brasileira de<br />Astronomia e Astronáutica</h4>
                 <p>OBA · Astronomia e astronáutica</p>
                 <a
@@ -961,7 +1125,7 @@
                   rel="noopener noreferrer"
                   aria-label="Ver certificado da medalha de prata na OBA (PDF)"
                   >Ver certificado
-                  <span aria-hidden="true"
+                  <span class="arrow-glyph" aria-hidden="true"
                     ><svg
                       class="icon icon-arrow-up-right"
                       viewBox="0 0 24 24"
@@ -986,11 +1150,8 @@
         id="contato"
         aria-labelledby="contact-title"
       >
-        <div class="shell">
-          <div class="section-label">
-            <span>05 / VAMOS CONVERSAR</span
-            ><span><span class="small-dot"></span> ABERTO A CONEXÕES</span>
-          </div>
+        <div class="shell" data-reveal>
+          <span class="section-kicker">Contato</span>
           <div class="contact-heading">
             <h2 id="contact-title">
               Uma boa conversa.<br /><span class="serif-word"
@@ -1020,33 +1181,37 @@
               Tem uma oportunidade de estágio ou um projeto<br />web ou mobile?
               Vamos conversar.
             </p>
-            <a class="email-link" href="mailto:raulsfr59@gmail.com"
-              >raulsfr59@gmail.com
-              <span aria-hidden="true"
-                ><svg
-                  class="icon icon-arrow-up-right"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path d="M6 18 18 6M6 6h12v12" /></svg></span></a
-            ><button
-              class="copy-email"
-              type="button"
-              aria-label="Copiar endereço de e-mail"
-              hidden
-            >
-              Copiar e-mail</button
-            ><span class="sr-only" id="copy-status" role="status"></span>
+            <div class="email-group">
+              <a class="email-link" href="mailto:raulsfr59@gmail.com"
+                >raulsfr59@gmail.com
+                <span class="arrow-glyph" aria-hidden="true"
+                  ><svg
+                    class="icon icon-arrow-up-right"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 18 18 6M6 6h12v12" /></svg></span
+              ></a>
+              <button
+                class="copy-email"
+                type="button"
+                aria-label="Copiar endereço de e-mail"
+                hidden
+              >
+                <span class="t-text-swap">Copiar e-mail</span>
+              </button>
+              <span class="sr-only" id="copy-status" role="status"></span>
+            </div>
           </div>
           <nav class="social-links" aria-label="Redes e contato">
             <a
-              class="contact-card contact-card-linkedin"
+              class="contact-card contact-card-linkedin spotlight-card"
               href="https://linkedin.com/in/raullferreiraa"
               target="_blank"
               rel="noopener noreferrer"
@@ -1071,7 +1236,7 @@
                   <path d="M6 18 18 6M6 6h12v12" /></svg></span
             ></a>
             <a
-              class="contact-card"
+              class="contact-card spotlight-card"
               href="https://github.com/raullferreiraa"
               target="_blank"
               rel="noopener noreferrer"
@@ -1096,7 +1261,7 @@
                   <path d="M6 18 18 6M6 6h12v12" /></svg></span
             ></a>
             <a
-              class="contact-card"
+              class="contact-card spotlight-card"
               href="Curriculo_Raul_Silva_Ferreira.pdf"
               download
               ><span class="contact-icon" aria-hidden="true"
@@ -1131,12 +1296,16 @@
         </div>
       </section>
     </main>
+
     <footer class="shell footer">
       <a class="brand" href="#inicio" aria-label="Voltar ao início"
         >rf<span>.</span></a
-      ><span>© <span id="year">2026</span> Raul Ferreira</span
-      ><span>Feito com intenção. Em constante evolução.</span
-      ><a href="#inicio"
+      >
+      <span>© <span id="year">2026</span> Raul Ferreira</span>
+      <span class="footer-tagline"
+        >Feito com intenção. Em constante evolução.</span
+      >
+      <a class="footer-top" href="#inicio"
         >Voltar ao topo
         <svg
           class="icon icon-arrow-up"
